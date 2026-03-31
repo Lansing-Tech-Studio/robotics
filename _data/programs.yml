@@ -1,0 +1,7 @@
+- name: FIRST LEGO League
+  slug: fll
+  url: https://www.firstlegoleague.org/
+
+- name: VEX Robotics
+  slug: vex
+  url: https://www.vexrobotics.com/

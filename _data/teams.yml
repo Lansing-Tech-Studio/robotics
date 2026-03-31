@@ -1,0 +1,5 @@
+- name: Team Alpha
+  slug: alpha
+  program: fll
+  season: 2026
+  status: active

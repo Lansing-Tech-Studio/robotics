@@ -1,0 +1,92 @@
+/* Print-friendly styling for readability via VS Code Print extension */
+/* Only apply to main content area, not navigation */
+.main-content,
+.main-content .content {
+  font-family: "OpenDyslexic", "Atkinson Hyperlegible", "Segoe UI", Arial, sans-serif;
+  font-size: 16pt;
+  line-height: 1.6;
+}
+
+.main-content h1,
+.main-content h2 {
+  font-family: inherit;
+  line-height: 1.3;
+  margin-top: 0.6em;
+}
+.main-content ul,
+.main-content ol {
+  padding-left: 1.1em;
+}
+.main-content li {
+  margin: 0.25em 0;
+}
+code {
+  font-size: 90%;
+}
+
+/* Scrum template: give table cells room to write in */
+.main-content table td {
+  min-width: 6em;
+  height: 2em;
+  vertical-align: top;
+}
+
+.main-content table td:first-child {
+  min-width: 8em;
+}
+
+/* Attendee checkboxes: spacing for handwritten names */
+.main-content li {
+  line-height: 2.2;
+}
+
+/* Page break utilities */
+.page-break-before {
+  display: block;
+  page-break-before: always;
+  break-before: page;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.page-break-after {
+  display: block;
+  page-break-after: always;
+  break-after: page;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.page-break-inside-avoid {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.no-page-break {
+  page-break-before: avoid;
+  page-break-after: avoid;
+  page-break-inside: avoid;
+  break-before: avoid;
+  break-after: avoid;
+  break-inside: avoid;
+}
+
+@media print {
+  body > div > h1:nth-child(1), div.footer {
+    display: none;
+  }
+  
+  /* Automatically prevent page breaks inside code blocks and tables */
+  pre, table, figure {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Keep headings with following content */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+}

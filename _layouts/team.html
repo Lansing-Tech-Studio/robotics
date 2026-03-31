@@ -1,0 +1,7 @@
+---
+layout: default
+---
+<h1>{{ page.title }}</h1>
+<p><strong>Program:</strong> {{ page.program | upcase }} | <strong>Season:</strong> {{ page.season }} | <strong>Status:</strong> {{ page.status }}</p>
+{% if page.coach %}<p><strong>Coach:</strong> {{ page.coach }}</p>{% endif %}
+{{ content }}

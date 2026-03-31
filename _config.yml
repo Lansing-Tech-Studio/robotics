@@ -1,0 +1,65 @@
+title: Lansing Tech Studio Robotics Hub
+description: Central hub for robotics teams, templates, and resources
+baseurl: "/robotics"
+parent_title: Lansing Tech Studio
+url: "https://lansingtechstudio.org"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Theme settings - using minimal defaults to allow custom styling
+plugins:
+  - jekyll-relative-links
+
+# Convert .md links to .html automatically
+relative_links:
+  enabled: true
+  collections: true
+
+collections:
+  teams:
+    output: true
+    permalink: /teams/:slug/
+
+# Navigation structure - used by _includes/nav.html
+navigation:
+  - title: Robotics Home
+    url: /
+  - title: Teams
+    url: /teams
+    subnav:
+      - title: Team Alpha
+        url: /teams/alpha/
+  - title: Templates
+    url: /templates/
+    subnav:
+      - title: Daily Scrum
+        url: /templates/daily-scrum-template
+      - title: Meeting Notes
+        url: /templates/meeting-notes-template
+      - title: Robot Design
+        url: /templates/robot-design-template
+  - title: Blog
+    url: /blog
+  - title: Resources
+    url: /resources
+  - title: About
+    url: /about
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "teams"
+    values:
+      layout: "team"
