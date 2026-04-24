@@ -1,6 +1,12 @@
 <ul class="nav-list">
   {% for item in site.navigation %}
-  <li class="nav-item{% if page.url == item.url %} active{% endif %}{% if item.subnav %} has-subnav{% endif %}">
+  {% assign item_active = false %}
+  {% if page.url == item.url %}
+    {% assign item_active = true %}
+  {% elsif item.url != "/" and page.url contains item.url %}
+    {% assign item_active = true %}
+  {% endif %}
+  <li class="nav-item{% if item_active %} active{% endif %}{% if item.subnav %} has-subnav{% endif %}">
     {% if item.subnav %}
     <div class="nav-item-header">
       <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
@@ -14,7 +20,7 @@
       {% for subitem in item.subnav %}
       <li class="nav-subitem">
         {% if subitem.url %}
-        <a href="{{ subitem.url | relative_url }}"{% if page.url == subitem.url %} class="active"{% endif %}>{{ subitem.title }}</a>
+        <a href="{{ subitem.url | relative_url }}"{% if page.url contains subitem.url %} class="active"{% endif %}>{{ subitem.title }}</a>
         {% else %}
         <span class="nav-section-title">{{ subitem.title }}</span>
         {% endif %}
