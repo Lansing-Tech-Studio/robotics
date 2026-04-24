@@ -114,7 +114,7 @@ title: "Daily Scrum"
 
 <h2>Blockers</h2>
 <table>
-  <tr><th>Assignee</th><th>Blocker</th><th>Help needed from</th></tr>
+  <tr><th width="40%">Blocker</th><th width="30%">Assignee</th><th width="30%">Help needed from</th></tr>
   <tr><td></td><td></td><td></td></tr>
   <tr><td></td><td></td><td></td></tr>
   <tr><td></td><td></td><td></td></tr>
