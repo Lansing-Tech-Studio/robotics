@@ -5,3 +5,17 @@ _site/
 vendor/
 .bundle/
 Gemfile.lock
+*:Zone.Identifier
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+*.cache
+*.pid
+*.seed
+*.pid.lock

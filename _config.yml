@@ -29,8 +29,14 @@ navigation:
   - title: Teams
     url: /teams
     subnav:
-      - title: Team Alpha
-        url: /teams/alpha/
+      - title: Team 1
+        url: /teams/team1/
+      - title: Team 2
+        url: /teams/team2/
+      - title: Team 3
+        url: /teams/team3/
+      - title: Team 4
+        url: /teams/team4/
   - title: Templates
     url: /templates/
     subnav:

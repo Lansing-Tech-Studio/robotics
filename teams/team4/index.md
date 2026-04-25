@@ -1,9 +1,8 @@
 ---
 layout: default
-title: Team Alpha
+title: Team 4
 ---
-
-# Team Alpha
 
 - [Notes](notes/)
 - [Blog](blog/)
+- [Programs](programs/)

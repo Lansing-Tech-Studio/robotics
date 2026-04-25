@@ -4,4 +4,11 @@ layout: default
 <h1>{{ page.title }}</h1>
 <p><strong>Program:</strong> {{ page.program | upcase }} | <strong>Season:</strong> {{ page.season }} | <strong>Status:</strong> {{ page.status }}</p>
 {% if page.coach %}<p><strong>Coach:</strong> {{ page.coach }}</p>{% endif %}
+
+<ul>
+    <li><a href="notes/">Notes</a></li>
+    <li><a href="blog/">Blog</a></li>
+    <li><a href="programs/">Programs</a></li>
+</ul>
+
 {{ content }}

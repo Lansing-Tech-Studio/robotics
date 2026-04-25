@@ -69,6 +69,13 @@ title: "Daily Scrum"
   }
   @media print {
     .scrum-form { font-size: 11pt; }
+    .scrum-form td {
+      border-bottom: 1px solid #fff;
+      border-top: 1px solid #fff;
+    }
+    .scrum-form th {
+      border-top: 1px solid #fff;
+    }
   }
 </style>
 
