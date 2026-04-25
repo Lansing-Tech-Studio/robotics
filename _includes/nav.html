@@ -6,8 +6,27 @@
   {% elsif item.url != "/" and page.url contains item.url %}
     {% assign item_active = true %}
   {% endif %}
-  <li class="nav-item{% if item_active %} active{% endif %}{% if item.subnav %} has-subnav{% endif %}">
-    {% if item.subnav %}
+  {% assign has_subnav = false %}
+  {% if item.subnav or item.data_source %}{% assign has_subnav = true %}{% endif %}
+  <li class="nav-item{% if item_active %} active{% endif %}{% if has_subnav %} has-subnav{% endif %}">
+    {% if item.data_source == "teams" %}
+    <div class="nav-item-header">
+      <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+      <button class="nav-toggle-btn" aria-label="Toggle {{ item.title }} submenu" aria-expanded="false">
+        <svg class="nav-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+    </div>
+    <ul class="nav-subnav">
+      {% for team in site.data.teams %}
+      {% assign team_url = "/teams/" | append: team.slug | append: "/" %}
+      <li class="nav-subitem">
+        <a href="{{ team_url | relative_url }}"{% if page.url contains team_url %} class="active"{% endif %}>{{ team.name }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% elsif item.subnav %}
     <div class="nav-item-header">
       <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
       <button class="nav-toggle-btn" aria-label="Toggle {{ item.title }} submenu" aria-expanded="false">

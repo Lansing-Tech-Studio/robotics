@@ -1,0 +1,29 @@
+# CODEOWNERS — controls who must approve pull requests that touch each path.
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+#
+# Global fallback: hub coaches/admins must approve all changes by default.
+* @Lansing-Tech-Studio/coaches
+
+# Each team's folder: team members only need approval from a coach or
+# themselves (add GitHub usernames below for each team).
+#
+# Format: /teams/<slug>/  @github-username @another-username
+#
+# Example:
+#   /teams/team1/  @student-a @student-b
+#
+# Until team member GitHub accounts are added, the global rule above applies.
+# Replace these placeholder lines with real GitHub usernames:
+
+/teams/team1/  @Lansing-Tech-Studio/coaches
+/teams/team2/  @Lansing-Tech-Studio/coaches
+/teams/team3/  @Lansing-Tech-Studio/coaches
+/teams/team4/  @Lansing-Tech-Studio/coaches
+
+# Core site files (layouts, config, shared assets) — coaches only.
+/_config.yml  @Lansing-Tech-Studio/coaches
+/_layouts/    @Lansing-Tech-Studio/coaches
+/_includes/   @Lansing-Tech-Studio/coaches
+/_data/       @Lansing-Tech-Studio/coaches
+/assets/      @Lansing-Tech-Studio/coaches
+/docs/        @Lansing-Tech-Studio/coaches

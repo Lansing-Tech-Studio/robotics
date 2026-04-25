@@ -1,9 +1,13 @@
 ---
 layout: default
 ---
-<h1>{{ page.title }}</h1>
-<p><strong>Program:</strong> {{ page.program | upcase }} | <strong>Season:</strong> {{ page.season }} | <strong>Status:</strong> {{ page.status }}</p>
-{% if page.coach %}<p><strong>Coach:</strong> {{ page.coach }}</p>{% endif %}
+{% assign url_parts = page.url | split: "/" %}
+{% assign team_slug = url_parts[2] %}
+{% assign team = site.data.teams | where: "slug", team_slug | first %}
+
+<h1>{{ team.name }}</h1>
+<p><strong>Program:</strong> {{ team.program | upcase }} | <strong>Season:</strong> {{ team.season }} | <strong>Status:</strong> {{ team.status }}</p>
+{% if team.coach %}<p><strong>Coach:</strong> {{ team.coach }}</p>{% endif %}
 
 <ul>
     <li><a href="notes/">Notes</a></li>

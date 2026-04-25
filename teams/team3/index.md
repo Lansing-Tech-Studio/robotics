@@ -1,7 +1,4 @@
 ---
-layout: default
+layout: team
 title: Team 3
 ---
-
-- [Notes](notes/)
-- [Blog](blog/)

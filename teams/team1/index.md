@@ -1,6 +1,4 @@
 ---
-layout: default
+layout: team
 title: Team 1
 ---
-
-# Team 1

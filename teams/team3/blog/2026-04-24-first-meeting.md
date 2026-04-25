@@ -2,7 +2,6 @@
 layout: post
 title: "First meeting for Team 3"
 date: 2026-04-24
-team: team3
 ---
 
 Welcome to the first meeting of Team 3! Today we kicked off the season and got to know each other.
