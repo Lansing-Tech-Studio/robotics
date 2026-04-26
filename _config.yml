@@ -23,19 +23,6 @@ navigation:
   - title: Teams
     url: /teams
     data_source: teams
-  - title: Templates
-    url: /templates/
-    subnav:
-      - title: Daily Scrum
-        url: /templates/daily-scrum-template
-      - title: Meeting Notes
-        url: /templates/meeting-notes-template
-      - title: Robot Design
-        url: /templates/robot-design-template
-  - title: Blog
-    url: /blog
-  - title: About
-    url: /about
 
 defaults:
   - scope:

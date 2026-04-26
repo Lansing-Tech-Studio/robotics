@@ -52,8 +52,9 @@
     document.querySelectorAll('.nav-toggle-btn').forEach(function(btn) {
       btn.addEventListener('click', function(e) {
         e.preventDefault();
-        const navItem = this.closest('.nav-item');
-        const isExpanded = navItem.classList.toggle('expanded');
+        const target = this.closest('.nav-team') || this.closest('.nav-item');
+        if (!target) return;
+        const isExpanded = target.classList.toggle('expanded');
         this.setAttribute('aria-expanded', isExpanded);
       });
     });
