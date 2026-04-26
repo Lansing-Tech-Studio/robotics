@@ -34,8 +34,6 @@ navigation:
         url: /templates/robot-design-template
   - title: Blog
     url: /blog
-  - title: Resources
-    url: /resources
   - title: About
     url: /about
 
