@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rouge'
+require 'zip'
 
 # Generates per-team Programs pages:
 #   - /teams/<slug>/programs/                — index listing every file in
@@ -52,6 +53,13 @@ module Jekyll
       team_url = "/teams/#{team['slug']}/"
       programs_url = "#{team_url}#{PROGRAMS_DIR}/"
 
+      zip_name = "#{team['slug']}-programs.zip"
+      zip_link = files.empty? ? '' : <<~HTML
+        <p class="program-actions no-print">
+          <a href="#{zip_name}" download>Download all as zip (#{zip_name})</a>
+        </p>
+      HTML
+
       rows = files.map do |name|
         is_python = name.end_with?('.py')
         href = is_python ? "#{name}.html" : name
@@ -76,6 +84,7 @@ module Jekyll
       self.content = <<~HTML
         <h1>#{team['name']} — Programs</h1>
         <p class="no-print"><a href="#{team_url}">&larr; Back to #{team['name']}</a></p>
+        #{zip_link}
         #{body}
       HTML
     end
@@ -121,6 +130,50 @@ module Jekyll
     def read_yaml(*); @data ||= {}; end
   end
 
+  # Static file that materializes a zip of every program file for a team
+  # directly into the destination directory at write time. Avoids polluting
+  # the source tree with build artifacts.
+  class TeamProgramsZipFile < StaticFile
+    def initialize(site, team_slug, files)
+      @site = site
+      @base = site.source
+      @dir  = "/teams/#{team_slug}/#{PROGRAMS_DIR}"
+      @name = "#{team_slug}-programs.zip"
+      @collection = nil
+      @relative_path = File.join(@dir, @name)
+      @extname = '.zip'
+      @team_slug = team_slug
+      @program_files = files
+    end
+
+    def path
+      File.join(@base, 'teams', @team_slug, PROGRAMS_DIR, @name)
+    end
+
+    def modified_time
+      times = @program_files.map do |f|
+        File.mtime(File.join(@base, 'teams', @team_slug, PROGRAMS_DIR, f))
+      end
+      times.max || Time.now
+    end
+
+    def write(dest)
+      dest_path = File.join(dest, @dir, @name)
+      FileUtils.mkdir_p(File.dirname(dest_path))
+
+      File.delete(dest_path) if File.exist?(dest_path)
+      Zip::File.open(dest_path, Zip::File::CREATE) do |zip|
+        @program_files.each do |name|
+          src = File.join(@base, 'teams', @team_slug, PROGRAMS_DIR, name)
+          zip.add(name, src)
+        end
+      end
+      true
+    end
+
+    def modified?; true; end
+  end
+
   class TeamProgramsGenerator < Generator
     safe true
     priority :low
@@ -141,6 +194,10 @@ module Jekyll
           next unless filename.end_with?('.py')
           site.pages << TeamProgramsPythonViewerPage.new(site, site.source, team, filename)
         end
+
+        # Bundle a zip of every program file (Python or otherwise) for the
+        # team. Skip when there's nothing to package.
+        site.static_files << TeamProgramsZipFile.new(site, slug, files) unless files.empty?
       end
     end
   end

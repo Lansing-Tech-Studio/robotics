@@ -4,6 +4,7 @@ source "https://rubygems.org"
 # deploy. Site is built by .github/workflows/pages.yml using actions/jekyll-build-pages.
 gem "jekyll", "~> 4.3"
 gem "webrick"
+gem "rubyzip", "~> 2.3"
 
 # Plugins
 group :jekyll_plugins do
