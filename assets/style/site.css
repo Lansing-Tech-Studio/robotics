@@ -474,6 +474,80 @@ pre code {
   font-size: 0.875rem;
 }
 
+/* Programs list & viewer */
+.program-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.program-list li {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.program-list li:first-child {
+  border-top: 1px solid var(--border-color);
+}
+
+.program-list a {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.program-meta {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.program-actions {
+  margin-bottom: 1rem;
+}
+
+.program-source .highlight {
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  font-size: 0.875rem;
+}
+
+.program-source .highlight pre {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.program-source .highlight table {
+  margin: 0;
+  border: none;
+  width: 100%;
+}
+
+.program-source .highlight table td {
+  border: none;
+  padding: 0;
+  vertical-align: top;
+}
+
+.program-source .highlight table td.gutter,
+.program-source .highlight table td.rouge-gutter {
+  user-select: none;
+  color: var(--text-muted);
+  text-align: right;
+  padding-right: 0.75rem;
+  border-right: 1px solid var(--border-color);
+}
+
+.program-source .highlight table td.code,
+.program-source .highlight table td.rouge-code {
+  padding-left: 0.75rem;
+  width: 100%;
+}
+
 /* Tables */
 table {
   width: 100%;
