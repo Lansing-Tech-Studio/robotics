@@ -1,0 +1,81 @@
+{% include templates/_form-styles.html %}
+{% assign team = include.team %}
+{% assign date = include.date %}
+{% assign members = include.members %}
+
+<div class="tform" markdown="0">
+
+<div class="field-row">
+  <strong>Team:</strong>
+  {% if team %}<span class="filled-wide">{{ team.name }}</span>{% else %}<span class="blank-wide">&nbsp;</span>{% endif %}
+  &emsp;
+  <strong>Date:</strong>
+  {% if date %}<span class="filled">{{ date | date: "%Y-%m-%d" }}</span>{% else %}<span class="filled js-today" data-blank-fallback="&nbsp;">&nbsp;</span>{% endif %}
+</div>
+
+<div class="field-row">
+  <strong>Author(s):</strong> <span class="blank-wide">&nbsp;</span>
+</div>
+
+<h2>Design Goal</h2>
+<div class="notes-area">&nbsp;</div>
+
+<h2>Current State</h2>
+<div class="notes-area">&nbsp;</div>
+
+<h2>Proposed Changes — Mechanical</h2>
+<table>
+  <tr><th>Component</th><th>Current</th><th>Proposed</th><th>Reason</th></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+</table>
+
+<h2>Proposed Changes — Programming</h2>
+<table>
+  <tr><th>Function / Behavior</th><th>Current</th><th>Proposed</th><th>Reason</th></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+</table>
+
+<span class="page-break-after">&nbsp;</span>
+
+<h2>Sketch / Diagram</h2>
+<p><em>Attach a photo or sketch. Place images in
+{% if team %}<code>teams/{{ team.slug }}/assets/</code>{% else %}your team's <code>assets/</code> folder{% endif %}.</em></p>
+<div class="notes-area" style="min-height: 12em;">&nbsp;</div>
+
+<h2>Testing Plan</h2>
+<table>
+  <tr><th>Test</th><th>What we're measuring</th><th>Success criteria</th></tr>
+  <tr><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td></tr>
+</table>
+
+<h2>Test Results</h2>
+<table>
+  <tr><th>Test</th><th>Result</th><th width="15%">Pass/Fail</th><th>Notes</th></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+</table>
+
+<h2>Lessons Learned</h2>
+<div class="notes-area">&nbsp;</div>
+
+<h2>Next Steps</h2>
+<table>
+  <tr><th width="6%">Done</th><th>Action</th><th width="20%">Owner</th></tr>
+  <tr><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td></tr>
+</table>
+
+</div>

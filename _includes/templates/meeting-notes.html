@@ -1,0 +1,90 @@
+{% include templates/_form-styles.html %}
+{% assign team = include.team %}
+{% assign date = include.date %}
+{% assign members = include.members %}
+{% assign extra_blank_rows = 2 %}
+
+<div class="tform" markdown="0">
+
+<div class="field-row">
+  <strong>Team:</strong>
+  {% if team %}<span class="filled-wide">{{ team.name }}</span>{% else %}<span class="blank-wide">&nbsp;</span>{% endif %}
+  &emsp;
+  <strong>Date:</strong>
+  {% if date %}<span class="filled">{{ date | date: "%Y-%m-%d" }}</span>{% else %}<span class="filled js-today" data-blank-fallback="&nbsp;">&nbsp;</span>{% endif %}
+</div>
+
+<div class="field-row">
+  <strong>Meeting type:</strong> <span class="blank">&nbsp;</span>
+  &emsp;
+  <strong>Location:</strong> <span class="blank">&nbsp;</span>
+  &emsp;
+  <strong>Duration:</strong> <span class="blank">&nbsp;</span>
+</div>
+
+<h2>Attendees</h2>
+<div class="attendee-grid">
+  {% if members %}
+    {% for m in members %}
+    <div class="attendee-line"><span class="checkbox"></span><span class="name">{{ m.name }}{% if m.role %} <em>({{ m.role }})</em>{% endif %}</span></div>
+    {% endfor %}
+    {% for i in (1..extra_blank_rows) %}
+    <div class="attendee-line"><span class="checkbox"></span><span class="name">&nbsp;</span></div>
+    {% endfor %}
+  {% else %}
+    {% for i in (1..6) %}
+    <div class="attendee-line"><span class="checkbox"></span><span class="name">&nbsp;</span></div>
+    {% endfor %}
+  {% endif %}
+</div>
+
+<h2>Agenda</h2>
+<table>
+  <tr><th width="6%">#</th><th>Topic</th></tr>
+  <tr><td>1</td><td></td></tr>
+  <tr><td>2</td><td></td></tr>
+  <tr><td>3</td><td></td></tr>
+  <tr><td>4</td><td></td></tr>
+  <tr><td>5</td><td></td></tr>
+</table>
+
+<h2>Discussion</h2>
+<table>
+  <tr><th width="25%">Topic</th><th>Notes</th></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+</table>
+
+<span class="page-break-after">&nbsp;</span>
+
+<h2>Decisions</h2>
+<table>
+  <tr><th width="6%">#</th><th>Decision</th><th width="25%">Owner</th></tr>
+  <tr><td>1</td><td></td><td></td></tr>
+  <tr><td>2</td><td></td><td></td></tr>
+  <tr><td>3</td><td></td><td></td></tr>
+  <tr><td>4</td><td></td><td></td></tr>
+</table>
+
+<h2>Action Items</h2>
+<table>
+  <tr><th width="6%">#</th><th>Action</th><th width="20%">Owner</th><th width="15%">Due</th></tr>
+  <tr><td>1</td><td></td><td></td><td></td></tr>
+  <tr><td>2</td><td></td><td></td><td></td></tr>
+  <tr><td>3</td><td></td><td></td><td></td></tr>
+  <tr><td>4</td><td></td><td></td><td></td></tr>
+  <tr><td>5</td><td></td><td></td><td></td></tr>
+</table>
+
+<h2>Next Meeting</h2>
+<div class="field-row">
+  <strong>Date:</strong> <span class="blank">&nbsp;</span>
+  &emsp;
+  <strong>Focus:</strong> <span class="blank-wide">&nbsp;</span>
+</div>
+
+</div>

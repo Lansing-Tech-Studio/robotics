@@ -1,0 +1,100 @@
+{% include templates/_form-styles.html %}
+{% assign team = include.team %}
+{% assign date = include.date %}
+{% assign members = include.members %}
+{% assign extra_blank_rows = 2 %}
+
+<div class="tform" markdown="0">
+
+<div class="field-row">
+  <strong>Team:</strong>
+  {% if team %}<span class="filled-wide">{{ team.name }}</span>{% else %}<span class="blank-wide">&nbsp;</span>{% endif %}
+  &emsp;
+  <strong>Date:</strong>
+  {% if date %}<span class="filled">{{ date | date: "%Y-%m-%d" }}</span>{% else %}<span class="filled js-today" data-blank-fallback="&nbsp;">&nbsp;</span>{% endif %}
+</div>
+
+<h2>Attendees</h2>
+<div class="attendee-grid">
+  {% if members %}
+    {% for m in members %}
+    <div class="attendee-line"><span class="checkbox"></span><span class="name">{{ m.name }}{% if m.role %} <em>({{ m.role }})</em>{% endif %}</span></div>
+    {% endfor %}
+    {% for i in (1..extra_blank_rows) %}
+    <div class="attendee-line"><span class="checkbox"></span><span class="name">&nbsp;</span></div>
+    {% endfor %}
+  {% else %}
+    {% for i in (1..6) %}
+    <div class="attendee-line"><span class="checkbox"></span><span class="name">&nbsp;</span></div>
+    {% endfor %}
+  {% endif %}
+</div>
+
+<h2>What did we accomplish since last meeting?</h2>
+<table>
+  <tr><th>Who</th><th>What they did</th></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+</table>
+
+<h2>What are we working on today?</h2>
+<table>
+  <tr><th>Task</th><th>Goal/Criteria</th></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+</table>
+
+<h2>Blockers</h2>
+<table>
+  <tr><th width="40%">Blocker</th><th width="30%">Assignee</th><th width="30%">Help needed from</th></tr>
+  <tr><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td></tr>
+</table>
+
+<span class="page-break-after">&nbsp;</span>
+
+<h2>What were the insights for today? What changes or adaptations did you make?</h2>
+<table>
+  <tr><th>Notes</th></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+</table>
+
+<h2>What do you hope to accomplish next meeting?</h2>
+<table>
+  <tr><th>Notes</th></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+</table>
+
+<h2>Is there anything that needs to be done before next meeting?</h2>
+<table>
+  <tr><th>Who</th><th>What they'll do</th></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+  <tr><td></td><td></td></tr>
+</table>
+
+</div>

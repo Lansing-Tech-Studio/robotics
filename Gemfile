@@ -1,7 +1,8 @@
 source "https://rubygems.org"
 
-# GitHub Pages gem includes all the right dependencies
-gem "github-pages", group: :jekyll_plugins
+# Using plain Jekyll (not the github-pages gem) so custom _plugins/ run on
+# deploy. Site is built by .github/workflows/pages.yml using actions/jekyll-build-pages.
+gem "jekyll", "~> 4.3"
 gem "webrick"
 
 # Plugins

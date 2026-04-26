@@ -4,21 +4,41 @@
   season: 2026
   status: active
   coach: Brendon Thiede
+  members:
+    - name: Edmond
+    - name: Dexter
+    - name: Albert
+    - name: Gabe
 - name: Team 2
   slug: team2
   program: fll
   season: 2026
   status: active
   coach: Brendon Thiede
+  members:
+    - name: Elwood
+    - name: Liam
+    - name: Zach
+    - name: Noah
+    - name: Will
 - name: Team 3
   slug: team3
   program: fll
   season: 2026
   status: active
   coach: Brendon Thiede
+  members:
+    - name: Cadence
+    - name: Lilly
+    - name: Louie
+    - name: Tucker
+    - name: Xavier
 - name: Team 4
   slug: team4
   program: fll
   season: 2026
   status: active
   coach: Brendon Thiede
+  members:
+    - name: Adelinn
+    - name: Ellie

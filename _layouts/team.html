@@ -15,4 +15,21 @@ layout: default
     <li><a href="programs/">Programs</a></li>
 </ul>
 
+<h2>Templates</h2>
+<p>Pre-filled with this team's name, coach, and roster. Print blanks for meetings, or scaffold a dated snapshot with <code>rake note:new team={{ team.slug }} template=&lt;name&gt;</code>.</p>
+<ul>
+    <li><a href="templates/daily-scrum/">Daily Scrum</a></li>
+    <li><a href="templates/meeting-notes/">Meeting Notes</a></li>
+    <li><a href="templates/robot-design/">Robot Design</a></li>
+</ul>
+
+{% if team.members %}
+<h2>Members</h2>
+<ul>
+    {% for m in team.members %}
+    <li>{{ m.name }}{% if m.role %} <em>({{ m.role }})</em>{% endif %}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 {{ content }}

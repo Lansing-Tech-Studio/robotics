@@ -1,0 +1,143 @@
+<style>
+    /* Print-first form styles shared by all team templates */
+    .tform {
+        font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .tform .field-row {
+        margin-bottom: 0.5em;
+    }
+
+    .tform .blank {
+        display: inline-block;
+        border-bottom: 1px solid #000;
+        min-width: 10em;
+    }
+
+    .tform .blank-wide {
+        display: inline-block;
+        border-bottom: 1px solid #000;
+        min-width: 20em;
+    }
+
+    .tform .filled {
+        display: inline-block;
+        border-bottom: 1px solid #000;
+        min-width: 10em;
+        padding: 0 0.25em;
+    }
+
+    .tform .filled-wide {
+        display: inline-block;
+        border-bottom: 1px solid #000;
+        min-width: 20em;
+        padding: 0 0.25em;
+    }
+
+    .tform table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1em;
+    }
+
+    .tform th {
+        text-align: left;
+        border-bottom: 2px solid #000;
+        padding: 0.2em 0.5em;
+        font-size: 0.95em;
+    }
+
+    .tform td {
+        border-bottom: 1px solid #ccc;
+        padding: 0.6em 0.5em;
+        height: 2em;
+        vertical-align: top;
+    }
+
+    .tform h2 {
+        margin-top: 0.8em;
+        margin-bottom: 0.3em;
+        font-size: 1.1em;
+    }
+
+    .tform h3 {
+        margin-top: 0.6em;
+        margin-bottom: 0.2em;
+        font-size: 1em;
+    }
+
+    .tform .attendee-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.4em 2em;
+        margin-bottom: 1em;
+    }
+
+    .tform .attendee-line {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+    }
+
+    .tform .attendee-line .checkbox {
+        flex-shrink: 0;
+        width: 1em;
+        height: 1em;
+        border: 1px solid #000;
+        display: inline-block;
+    }
+
+    .tform .attendee-line .name {
+        flex-grow: 1;
+        border-bottom: 1px solid #000;
+        padding: 0 0.25em;
+        min-height: 1.4em;
+    }
+
+    .tform .notes-area {
+        border: 1px solid #ccc;
+        min-height: 6em;
+        padding: 0.5em;
+    }
+
+    @media print {
+        .tform {
+            font-size: 11pt;
+        }
+
+        .tform td {
+            border: 1px solid #fff;
+        }
+
+        .tform th {
+            border: 1px solid #fff;
+            border-bottom: 2px solid #000;
+        }
+        .no-print {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    // Auto-fill today's date on any blank Date field in a team template form.
+    // Snapshots have a hardcoded date and won't carry the .js-today class.
+    (function () {
+        function fill() {
+            var d = new Date();
+            var iso = d.getFullYear() + '-' +
+                String(d.getMonth() + 1).padStart(2, '0') + '-' +
+                String(d.getDate()).padStart(2, '0');
+            document.querySelectorAll('.tform .js-today').forEach(function (el) {
+                el.textContent = iso;
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', fill);
+        } else {
+            fill();
+        }
+        // Also refresh just before printing in case the page has been open across midnight.
+        window.addEventListener('beforeprint', fill);
+    })();
+</script>
