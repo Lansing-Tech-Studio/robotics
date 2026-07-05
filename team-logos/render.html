@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>render</title>
+<link rel="stylesheet" href="logos.css">
+<style>
+  :root { --logo-size: 512px; }   /* export size */
+  html, body { margin: 0; padding: 0; overflow: hidden; background: transparent; }
+  /* one tile, pinned to the top-left corner at exact export size */
+  .logo { position: fixed; top: 0; left: 0; }
+</style>
+</head>
+<body>
+  <div class="logo"><span class="num" id="digit">1</span></div>
+  <script>
+    // digit comes from ?n=1..4
+    const n = new URLSearchParams(location.search).get("n") || "1";
+    document.getElementById("digit").textContent = n;
+    document.title = "team" + n;
+  </script>
+</body>
+</html>

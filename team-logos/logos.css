@@ -1,0 +1,68 @@
+/* Shared team-logo styling — used by both index.html (preview) and
+   render.html (PNG export) so the two can never drift. All sizing is
+   expressed relative to --logo-size, so a tile looks identical at any
+   resolution (240px preview vs 512px export). */
+
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+  src: url("montserrat-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 800;
+  font-style: normal;
+  font-display: block;
+  src: url("montserrat-800.woff2") format("woff2");
+}
+
+:root {
+  --logo-size: 240px;        /* set per-page: 240 preview, 512 export */
+  --number-scale: 0.92;      /* glyph font-size as a fraction of the tile */
+  --number-height: 75%;      /* line-box height relative to the tile */
+  --stroke-color: #2b2f36;   /* slightly-gray border for a modern feel */
+
+  /* stroke + shadow scale WITH the tile so exports match the preview */
+  --stroke-width: calc(var(--logo-size) * 0.0333);   /* 8px @ 240 */
+
+  /* Crop the source icon inward to drop its rounded corners / gray ring.
+     Value is in source-image pixels (icon is 512×512). ~24px clears the
+     rounded corner and lands inside the solid navy on all four sides. */
+  --source-px: 512;
+  --crop-px: 24;
+}
+
+.logo {
+  width: var(--logo-size);
+  height: var(--logo-size);       /* square aspect ratio */
+  aspect-ratio: 1 / 1;
+  background-image: url("logo-base.png");
+  /* Scale up so the inner (source - 2*crop) region fills the square tile,
+     cropping the rounded corners equally on all sides. */
+  background-size: calc(var(--logo-size) * var(--source-px) / (var(--source-px) - 2 * var(--crop-px)));
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.num {
+  font-size: calc(var(--logo-size) * var(--number-scale));
+  line-height: var(--number-height);
+  font-weight: 800;
+  font-family: "Montserrat", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #ffffff;
+  /* dark border drawn BEHIND the fill so it doesn't eat the glyph */
+  -webkit-text-stroke: var(--stroke-width) var(--stroke-color);
+  paint-order: stroke fill;
+  /* drop shadow for depth — offsets scale with the tile */
+  filter:
+    drop-shadow(0 calc(var(--logo-size) * 0.025) calc(var(--logo-size) * 0.0417) rgba(0, 0, 0, 0.55))
+    drop-shadow(0 calc(var(--logo-size) * 0.0083) calc(var(--logo-size) * 0.0125) rgba(0, 0, 0, 0.45));
+  user-select: none;
+}

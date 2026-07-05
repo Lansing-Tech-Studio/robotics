@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Logos — Preview</title>
+<link rel="stylesheet" href="logos.css">
+<style>
+  :root { --logo-size: 240px; }   /* preview size */
+
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 3rem 1rem;
+    background: #14161a;
+    color: #e7e9ec;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  h1 { font-weight: 600; font-size: 1.25rem; letter-spacing: .02em; margin: 0; }
+  p.hint { margin: 0; opacity: .6; font-size: .85rem; }
+  .row { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+</style>
+</head>
+<body>
+  <h1>Team Logos — Preview</h1>
+  <p class="hint">Teams 1–4. Shared styling lives in logos.css; render.html exports the PNGs.</p>
+  <div class="row">
+    <div class="logo"><span class="num">1</span></div>
+    <div class="logo"><span class="num">2</span></div>
+    <div class="logo"><span class="num">3</span></div>
+    <div class="logo"><span class="num">4</span></div>
+  </div>
+</body>
+</html>
