@@ -1,41 +1,33 @@
-title: Lansing Tech Studio Robotics Hub
-description: Central hub for robotics teams, templates, and resources
-baseurl: "/robotics"
-parent_title: Lansing Tech Studio
+title: Lansing Tech Studio Robotics
+description: Robotics teams at Lansing Tech Studio — find each team's blog here.
 url: "https://lansingtechstudio.org"
+baseurl: "/robotics"
+repo_url: "https://github.com/Lansing-Tech-Studio/robotics"
 
-# Build settings
+# Same shared theme the team blogs use, so the hub and the team sites look
+# like one family. See Lansing-Tech-Studio/lts-team-blog-theme.
+remote_theme: Lansing-Tech-Studio/lts-team-blog-theme@v1
+
+nav:
+  - title: Lansing Tech Studio
+    url: https://lansingtechstudio.org
+
 markdown: kramdown
 highlighter: rouge
 
-# Theme settings - using minimal defaults to allow custom styling
 plugins:
-  - jekyll-relative-links
-
-# Convert .md links to .html automatically
-relative_links:
-  enabled: true
-
-# Navigation structure - used by _includes/nav.html
-navigation:
-  - title: Robotics Home
-    url: /
-  - title: Teams
-    url: /teams
-    data_source: teams
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 defaults:
   - scope:
       path: ""
       type: "pages"
     values:
-      layout: "default"
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-  - scope:
-      path: "teams"
-    values:
-      layout: "post"
+      layout: "page"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor

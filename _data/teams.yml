@@ -1,44 +1,45 @@
+# Every card on the hub's front page comes from this file.
+#
+# To point a team at their blog, fill in `site:` with their GitHub Pages URL —
+# it will be https://<their-github-username>.github.io/
+# Until then the card reads "Blog coming soon".
+#
+# Rosters aren't listed here anymore: each team introduces its own members on
+# the About page of their own site, which also keeps kids' names off a page
+# they don't control. Previous rosters are in git history if you want them.
+
 - name: Team 1
   slug: team1
   program: fll
   season: 2026
   status: active
   coach: Brendon Thiede
-  members:
-    - name: Edmond
-    - name: Dexter
-    - name: Albert
-    - name: Gabe
+  logo: /team-logos/team1.png
+  site:
+
 - name: Team 2
   slug: team2
   program: fll
   season: 2026
   status: active
   coach: Brendon Thiede
-  members:
-    - name: Elwood
-    - name: Liam
-    - name: Zach
-    - name: Noah
-    - name: Will
+  logo: /team-logos/team2.png
+  site:
+
 - name: Team 3
   slug: team3
   program: fll
   season: 2026
   status: active
   coach: Brendon Thiede
-  members:
-    - name: Cadence
-    - name: Lilly
-    - name: Louie
-    - name: Tucker
-    - name: Xavier
+  logo: /team-logos/team3.png
+  site:
+
 - name: Team 4
   slug: team4
   program: fll
   season: 2026
   status: active
   coach: Brendon Thiede
-  members:
-    - name: Adelinn
-    - name: Ellie
+  logo: /team-logos/team4.png
+  site:

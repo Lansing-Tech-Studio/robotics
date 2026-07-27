@@ -1,12 +1,5 @@
+# Only needed to preview the hub locally; GitHub Pages builds it without this.
 source "https://rubygems.org"
 
-# Using plain Jekyll (not the github-pages gem) so custom _plugins/ run on
-# deploy. Site is built by .github/workflows/pages.yml using actions/jekyll-build-pages.
-gem "jekyll", "~> 4.3"
+gem "github-pages", group: :jekyll_plugins
 gem "webrick"
-gem "rubyzip", "~> 2.3"
-
-# Plugins
-group :jekyll_plugins do
-  gem "jekyll-relative-links"
-end
