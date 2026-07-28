@@ -2,7 +2,7 @@
 title: Robotics Teams
 ---
 
-Each of our FIRST LEGO League teams keeps its own blog — build notes, what broke,
+Each of our FIRST LEGO League teams keeps its own blog: build notes, what broke,
 and what they tried next. Pick a team to read along.
 
 <ul class="team-grid">
