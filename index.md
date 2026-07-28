@@ -16,6 +16,9 @@ and what they tried next. Pick a team to read along.
     {% else %}
       <p class="coming-soon">Blog coming soon</p>
     {% endif %}
+    {% if team.site %}
+      <p><a href="{{ team.repos }}">See our repos &rarr;</a></p>
+    {% endif %}
   </li>
 {% endfor %}
 </ul>
