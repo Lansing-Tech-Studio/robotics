@@ -1,0 +1,242 @@
+/* Sidebar navigation, ported from the workshops site so the two subsites match.
+   Loaded after the shared theme's site.css and only overrides what the sidebar
+   needs: a fixed header, and content shifted right to make room. Colors and
+   type all come from the theme's variables. */
+
+:root {
+  --sidebar-width: 280px;
+}
+
+/* Header has to be fixed so the sidebar can sit under it */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  z-index: 1000;
+}
+
+.site-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Mobile nav toggle */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.hamburger {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: white;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 3px;
+  background: white;
+  transition: transform 0.2s;
+}
+
+.hamburger::before { top: -8px; }
+.hamburger::after { bottom: -8px; }
+
+.nav-toggle.active .hamburger { background: transparent; }
+.nav-toggle.active .hamburger::before { transform: translateY(8px) rotate(45deg); }
+.nav-toggle.active .hamburger::after { transform: translateY(-8px) rotate(-45deg); }
+
+/* Page layout */
+.page-wrapper {
+  display: flex;
+  padding-top: var(--header-height);
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: var(--sidebar-width);
+  /* 100vh on mobile browsers reflects the LARGEST viewport — chrome hidden —
+     so the bottom ends up under the URL bar. 100dvh tracks what's visible. */
+  height: calc(100vh - var(--header-height));
+  height: calc(100dvh - var(--header-height));
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--spacing-unit) 0 calc(var(--spacing-unit) + env(safe-area-inset-bottom));
+}
+
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  max-width: calc(100% - var(--sidebar-width));
+}
+
+/* Navigation */
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item > a {
+  display: block;
+  padding: 0.75rem var(--spacing-unit);
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 600;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.nav-item.has-subnav > .nav-item-header {
+  display: flex;
+  align-items: center;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.nav-item.has-subnav > .nav-item-header > a {
+  flex: 1;
+  padding: 0.75rem var(--spacing-unit);
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 600;
+  border-left: none;
+}
+
+.nav-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-right: 0.5rem;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.nav-toggle-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--primary-color);
+}
+
+.nav-chevron { transition: transform 0.2s ease; }
+.nav-item.expanded .nav-chevron { transform: rotate(180deg); }
+
+.nav-item > a:hover,
+.nav-item.active > a,
+.nav-item.has-subnav > .nav-item-header:hover,
+.nav-item.has-subnav.active > .nav-item-header {
+  background: var(--bg-tertiary);
+  border-left-color: var(--primary-color);
+}
+
+.nav-item.has-subnav > .nav-item-header:hover > a,
+.nav-item.has-subnav.active > .nav-item-header > a {
+  color: var(--primary-color);
+}
+
+.nav-subnav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.nav-item.expanded .nav-subnav { max-height: 500px; }
+
+.nav-subitem > a {
+  display: block;
+  padding: 0.5rem var(--spacing-unit) 0.5rem calc(var(--spacing-unit) * 1.5);
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-subitem > a:hover,
+.nav-subitem > a.active { color: var(--primary-color); }
+
+.nav-section-title {
+  display: block;
+  padding: 0.75rem var(--spacing-unit) 0.25rem calc(var(--spacing-unit) * 1.5);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-items a {
+  display: block;
+  padding: 0.4rem var(--spacing-unit) 0.4rem calc(var(--spacing-unit) * 2);
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.nav-items a:hover,
+.nav-items a.active { color: var(--primary-color); }
+
+@media (max-width: 900px) {
+  .nav-toggle { display: block; }
+
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+  }
+
+  .sidebar.open { transform: translateX(0); }
+
+  .main-content {
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+
+/* Coaches print the build instructions; the chrome shouldn't come with it. */
+@media print {
+  .site-header,
+  .sidebar,
+  .nav-toggle,
+  .site-footer { display: none !important; }
+
+  .page-wrapper { padding-top: 0; }
+
+  .main-content {
+    margin-left: 0 !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+}

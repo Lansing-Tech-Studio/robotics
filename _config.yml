@@ -2,15 +2,24 @@ title: Lansing Tech Studio Robotics
 description: Robotics teams at Lansing Tech Studio — find each team's blog here.
 url: "https://lansingtechstudio.org"
 baseurl: "/robotics"
+parent_title: Lansing Tech Studio
 repo_url: "https://github.com/Lansing-Tech-Studio/robotics"
 
 # Same shared theme the team blogs use, so the hub and the team sites look
 # like one family. See Lansing-Tech-Studio/lts-team-blog-theme.
 remote_theme: Lansing-Tech-Studio/lts-team-blog-theme@v1
 
-nav:
-  - title: Lansing Tech Studio
-    url: https://lansingtechstudio.org
+# Sidebar menu, rendered by _includes/nav.html. Same shape as the workshops
+# site: a flat list, where any item may carry a `subnav`, and a subnav entry may
+# group links under a heading with `items`.
+navigation:
+  - title: Robotics Home
+    url: /
+  - title: FLL BIOGLOW (2026-27)
+    url: /fll/2026-bioglow/
+    subnav:
+      - title: Build Instructions
+        url: /fll/2026-bioglow/build-instructions/
 
 markdown: kramdown
 highlighter: rouge
