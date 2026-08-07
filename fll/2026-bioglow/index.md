@@ -4,26 +4,21 @@ permalink: /fll/2026-bioglow/
 ---
 
 Everything our teams need for the 2026-27 **BIOGLOW** season, in one place.
-These are the Founders Edition, Grades 4-8 (Challenge) materials — the same
+These are the Founders Edition, Grades 4-8 (Challenge) materials - the same
 files FIRST publishes on its [season materials page][materials], plus our own
 build guide.
 
-**[Mission model build instructions &rarr;]({{ '/fll/2026-bioglow/build-instructions/' | relative_url }})**
-— all thirteen models with pictures of the finished build and the bags each one
+**[Mission model build instructions]({{ '/fll/2026-bioglow/build-instructions/' | relative_url }})**
+- all thirteen models with pictures of the finished build and the bags each one
 needs.
 
 ## Start here
 
-- [Team Meeting Guide](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-tmg.pdf)
-  — the season, meeting by meeting.
-- [Robot Game Rulebook](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-rgr.pdf)
-  — the missions and the rules that score them.
-- [Engineering Notebook](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-en.pdf)
-  — where the team records what it tried.
-- [Challenge Updates](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-updates.pdf)
-  — rule corrections. Re-read this before every tournament; it overrides the
-  rulebook.
 - [Season Overview](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-season-overview.pdf)
+- [Robot Game Rulebook](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-rgr.pdf): the missions and the rules that score them.
+- [Engineering Notebook](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-en.pdf): these are good for making notes and drawing out experiments.
+- [Team Meeting Guide](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-tmg.pdf): we do not follow this guide, but it has some good ideas.
+- [Challenge Updates](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-updates.pdf): rule corrections. Check this periodically for any changes or clarifications.
 
 ## Building
 
@@ -34,40 +29,34 @@ needs.
 - [Field setup reference guide](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-field-setup-reference-guide.pdf)
   and the [field set-up video](https://youtu.be/wDan0826cn0)
 - [Wireframe and grid](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-wireframe-grid.pdf)
-  — mat measurements for planning robot paths.
+  - mat measurements for planning robot paths.
 
 ## Programming
 
-- [PyBricks](https://pybricks.com/) — what our teams program in.
-- [Guided mission code](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/guided-mission-bioglow-11.llsp3)
-  (`.llsp3`, opens in the LEGO SPIKE app)
+- [PyBricks](https://pybricks.com/): what our teams program in.
+- [PyBricks Code Editor](https://code.pybricks.com/): the online IDE for PyBricks.
 
 ## Scoring and judging
 
-- [Score calculator](https://eventhub.firstinspires.org/scoresheet) — the fastest
+- [Score calculator](https://eventhub.firstinspires.org/scoresheet): a fast
   way to check a run.
-- Rubrics: [color](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-rubrics-color.pdf)
-  · [grayscale](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-rubrics-grayscale.pdf)
-- [Judging session flow chart](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-judging-session-flowchart.pdf)
-  — what happens in the room.
-- [Awards](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-awards.pdf)
-- [Robot game scoresheet](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-software-scoresheet.pdf)
-  and the [Excel scorer](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-excel-scorer.xlsm)
-- [Participation rules](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-participation-rules.pdf)
+- [Robot game scoresheet](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-software-scoresheet.pdf): this is the scoresheet the referees will use at competition.
+- [Judging session flow chart](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-judging-session-flowchart.pdf): what happens in the judging room.
+- [Rubric](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-rubrics-color.pdf): this is what the judges use to evaluate and score your team.
+- [Awards](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-awards.pdf): the list of official awards and what they mean.
 
 ## Videos
 
-- [Season welcome](https://youtu.be/MPKxFy3qV2M)
-- [Robot game missions](https://youtu.be/uhZZ8O1StiQ) — watch this one together
-  as a team.
-- [Preparing for your event](https://youtu.be/9TMFtLKYT6o)
+- [Season welcome](https://youtu.be/MPKxFy3qV2M): brief overview of the season theme and some strategy for innovation project from last year's world champion team.
+- [Robot game missions](https://youtu.be/uhZZ8O1StiQ): explains each of the missions in the robot game.
+- [Preparing for your event](https://youtu.be/9TMFtLKYT6o): this is a great overview of what FIRST LEGO League is and explains how the competitions play out.
 
-## Elsewhere
+## Other resources
 
-- [FIRST season materials][materials] — the source for everything above,
+- [FIRST season materials][materials]: the source for everything above,
   including French and nonverbal versions.
 - [FIRST LEGO League](https://www.firstlegoleague.org/) and the
   [FLL program page](https://www.firstinspires.org/programs/fll)
-- [Event Hub](https://eventhub.firstinspires.org/) — tournament schedules and scores.
+- [Event Hub](https://eventhub.firstinspires.org/): tournament schedules and scores.
 
 [materials]: https://www.firstinspires.org/resources/library/fll/season-materials
