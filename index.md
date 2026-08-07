@@ -27,5 +27,8 @@ teams for local youth. Teams design and build a LEGO robot, program it in Python
 with [PyBricks](https://pybricks.com/), and take on a research project each
 season.
 
+This season is [BIOGLOW]({{ '/fll/2026-bioglow/' | relative_url }}) — rulebook,
+videos, and [build instructions for all thirteen mission models]({{ '/fll/2026-bioglow/build-instructions/' | relative_url }}).
+
 Interested in joining or coaching? Get in touch through the
 [main Lansing Tech Studio site](https://lansingtechstudio.org/contact/).
