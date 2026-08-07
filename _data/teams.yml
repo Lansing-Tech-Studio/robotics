@@ -15,7 +15,8 @@
   status: active
   coach: Brendon Thiede
   logo: /team-logos/team1.png
-  site:
+  site: https://lhh-team1.github.io
+  repos: https://github.com/lhh-team1
 
 - name: Team 2
   slug: team2
@@ -24,7 +25,8 @@
   status: active
   coach: Brendon Thiede
   logo: /team-logos/team2.png
-  site:
+  site: https://lhh-team2.github.io
+  repos: https://github.com/lhh-team2
 
 - name: Team 3
   slug: team3
@@ -33,7 +35,8 @@
   status: active
   coach: Brendon Thiede
   logo: /team-logos/team3.png
-  site:
+  site: https://lhh-team3.github.io
+  repos: https://github.com/lhh-team3
 
 - name: Team 4
   slug: team4
@@ -42,4 +45,5 @@
   status: active
   coach: Brendon Thiede
   logo: /team-logos/team4.png
-  site:
+  site: https://lhh-team4.github.io
+  repos: https://github.com/lhh-team4

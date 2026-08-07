@@ -2,7 +2,7 @@
 title: Robotics Teams
 ---
 
-Each of our FIRST LEGO League teams keeps its own blog — build notes, what broke,
+Each of our FIRST LEGO League teams keeps its own blog: build notes, what broke,
 and what they tried next. Pick a team to read along.
 
 <ul class="team-grid">
@@ -15,6 +15,9 @@ and what they tried next. Pick a team to read along.
       <p><a href="{{ team.site }}">Read the blog &rarr;</a></p>
     {% else %}
       <p class="coming-soon">Blog coming soon</p>
+    {% endif %}
+    {% if team.site %}
+      <p><a href="{{ team.repos }}">See our repos &rarr;</a></p>
     {% endif %}
   </li>
 {% endfor %}
