@@ -18,6 +18,8 @@ navigation:
   - title: FLL BIOGLOW (2026-27)
     url: /fll/2026-bioglow/
     subnav:
+      - title: Missions
+        url: /fll/2026-bioglow/missions/
       - title: Build Instructions
         url: /fll/2026-bioglow/build-instructions/
 

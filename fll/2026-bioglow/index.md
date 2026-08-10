@@ -8,8 +8,9 @@ These are the Founders Edition, Grades 4-8 (Challenge) materials - the same
 files FIRST publishes on its [season materials page][materials], plus our own
 build guide.
 
-**[Mission model build instructions]({{ '/fll/2026-bioglow/build-instructions/' | relative_url }})**
-- all thirteen models with pictures of the finished build and the bags each one
+**[Mission criteria]({{ '/fll/2026-bioglow/missions/' | relative_url }})**: the criteria for the fifteen missions taken from the [Robot Game Rulebook](https://firstinspires.blob.core.windows.net/fll/challenge/2026-27/fll-challenge-bioglow-rgr.pdf).
+
+**[Mission model build instructions]({{ '/fll/2026-bioglow/build-instructions/' | relative_url }})**: all thirteen models with pictures of the finished build and the bags each one
 needs.
 
 ## Start here

@@ -1,0 +1,78 @@
+# The fifteen Robot Game missions, in the order they appear on pages 9-12 of the
+# 2026-27 BIOGLOW Robot Game Rulebook. `assets/images/bioglow/mission-<id>.png`
+# is that mission's card cropped from those pages, so the image already carries
+# the description and the scoring table; `scoring` repeats it as text so the
+# page still works for anyone who cannot read the picture.
+- id: "01"
+  name: Drone Survey
+  scoring:
+    - "Drone is no longer touching the mat: 20"
+    - "Bonus: and the LiDAR map is completely flipped over, with the scan marker at least partly in the survey area: 10 added"
+- id: "02"
+  name: Exploding Seeds
+  scoring:
+    - "Seeds no longer touching the stalk: 10 each"
+- id: "03"
+  name: Flip the Rock
+  scoring:
+    - "The research flag is down: 20"
+    - "Bonus: and the rock has been returned to its original starting position: 10 added"
+- id: "04"
+  name: Lucky Leaves
+  scoring:
+    - "One leaf is completely removed, no longer touching the nest: 10"
+    - "Bonus: and the second leaf is completely removed, no longer touching the nest, with the katydid in its original starting position: 20 added"
+- id: "05"
+  name: Reaching Roots
+  scoring:
+    - "The plant root is partially extended: 10"
+    - "OR completely extended: 20 (only one scoring condition is possible)"
+- id: "06"
+  name: Leafcutter Frenzy
+  scoring:
+    - "The ant is touching the nest, and the leaf fragments are contained within the nest: 10 each fragment"
+- id: "07"
+  name: Humongous Fungus
+  scoring:
+    - "The mycelium is completely extended: 20"
+    - "Bonus: and a connection is formed between one team's extended mycelium and the opposing team's fully extended plant root: 10 added (two bonuses possible)"
+- id: "08"
+  name: Tangled
+  scoring:
+    - "The vine is touching the mat: 30"
+- id: "09"
+  name: Research Platform
+  scoring:
+    - "The research platform is raised: 10"
+    - "The camera trap is deployed: 10"
+    - "The seed is no longer touching the tree: 10"
+- id: "10"
+  name: Fragile Microhabitats
+  scoring:
+    - "The spider habitat is in its original starting position: 10"
+    - "The snail habitat is in its original starting position: 10"
+- id: "11"
+  name: Window to the Past
+  scoring:
+    - "The root cover is down, touching the mat: 20"
+- id: "12"
+  name: Forest Elder
+  scoring:
+    - "The cane is completely raised, touching the tree: 20"
+    - "The support tie is around the post: 10"
+- id: "13"
+  name: Keystone Species
+  scoring:
+    - "Your team's keystone species is on the restoration platform, and the young trees are raised: 30"
+- id: "14"
+  name: Seeds of Renewal
+  scoring:
+    - "Seeds are contained within the replantation station: 5 each"
+    - "Bonus: and are touching the mat: 5 added each"
+- id: "15"
+  name: Biocentric Architecture
+  scoring:
+    - "The nesting canopy is raised: 10"
+    - "The garden skylight is completely in: 10"
+    - "The compost hatch is completely opened, touching the mat: 10"
+    - "Environmental bonus: the greatest ecological need for the dock the model is in (mine dock: nesting canopy, city dock: garden skylight, farm dock: compost hatch): 10 added (only one bonus possible)"
