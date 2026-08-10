@@ -1,0 +1,161 @@
+---
+layout: null
+sitemap: false
+title: Team Roster — Name Tags
+---
+<!DOCTYPE html>
+<!-- Unlisted on purpose: not in site.navigation, sitemap: false, noindex.
+     Nothing here is secret, it's just only useful to coaches with the link.
+     Standalone layout (no sidebar/header) so the print output is only tags. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>{{ page.title }} | {{ site.title }}</title>
+<style>
+  @font-face {
+    font-family: "Montserrat";
+    font-weight: 700;
+    font-display: block;
+    src: url("{{ '/team-logos/montserrat-700.woff2' | relative_url }}") format("woff2");
+  }
+
+  /* 0.25in margins leave 8.0 x 10.5in printable — a 3x3 grid of tags is
+     7.13 x 9.62in, so nine still land on one letter sheet. Print at 100%
+     scale ("Actual size", not "Fit to page"); the sleeve-fitting shrink is
+     already baked into --tag-scale below, so a scale set in the print dialog
+     now compounds with it. */
+  @page { size: letter; margin: 0.25in; }
+
+  :root {
+    /* Nominal tag is 2.5 x 3.375in; 0.95 is the shrink that measured right in
+       the lanyard sleeve, so a 100% print now lands at 2.375 x 3.206in. Every
+       physical dimension below multiplies by this, so the whole tag scales
+       together — change this one number to refit a different sleeve. */
+    --tag-scale: 0.95;
+    --tag-w: calc(2.5in * var(--tag-scale));
+    --tag-h: calc(3.375in * var(--tag-scale));
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #eceef1;
+    font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .controls {
+    padding: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    background: #fff;
+    border-bottom: 1px solid #d5d9df;
+  }
+  .controls h1 { font-size: 1.1rem; margin: 0 1rem 0 0; }
+  .controls label {
+    cursor: pointer;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid #b9c0ca;
+    border-radius: 999px;
+    font-size: 0.85rem;
+  }
+  .controls input { margin-right: 0.4rem; }
+  .controls input:checked + span { font-weight: 700; }
+  .hint { flex-basis: 100%; margin: 0; font-size: 0.8rem; color: #5a6270; }
+
+  .sheet {
+    display: grid;
+    grid-template-columns: repeat(3, var(--tag-w));
+    justify-content: center;
+    padding: 0.5in 0;
+  }
+
+  .tag {
+    width: var(--tag-w);
+    height: var(--tag-h);
+    break-inside: avoid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: calc(0.18in * var(--tag-scale)) calc(0.12in * var(--tag-scale)) calc(0.14in * var(--tag-scale));
+    background: #fff;
+    /* A real border, not an inset box-shadow: browsers treat box-shadow as a
+       background graphic and drop it unless the coach checks "Background
+       graphics" in the print dialog, which is off by default. */
+    border: calc(0.055in * var(--tag-scale)) solid var(--team);
+    outline: 1px dashed #b9c0ca;   /* cut line */
+    outline-offset: -0.5px;
+  }
+
+  .tag .name {
+    font-weight: 700;
+    font-size: calc(0.30in * var(--tag-scale));
+    line-height: 1.1;
+    text-align: center;
+    /* The vivid team color is fine as a thick border but too light as text —
+       yellow on white is unreadable. Darkening it keeps the team identity and
+       clears 4.5:1 contrast for every one of the five. */
+    color: color-mix(in srgb, var(--team) 55%, #111);
+    padding: 0 calc(0.1in * var(--tag-scale));
+  }
+  .tag .name.long { font-size: calc(0.22in * var(--tag-scale)); }
+
+  .tag img {
+    margin-top: auto;         /* pushes the artwork to the bottom */
+    max-width: 100%;
+    max-height: calc(2.35in * var(--tag-scale));
+    object-fit: contain;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .controls { display: none; }
+    .sheet { padding: 0; }
+    .tag { outline-color: #d9dde2; }
+  }
+
+  /* Team filter, no JS: the checked radio hides every other team's tags. */
+  body:has(#f-all:checked) .tag { display: flex; }
+  {% for t in site.data.roster %}
+  body:has(#f-{{ t.slug }}:checked) .tag:not(.{{ t.slug }}) { display: none; }
+  {% endfor %}
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <h1>Name tags</h1>
+  <label><input type="radio" name="team" id="f-all" checked><span>All teams</span></label>
+  {% for t in site.data.roster %}
+  <label><input type="radio" name="team" id="f-{{ t.slug }}"><span>{{ t.team }}</span></label>
+  {% endfor %}
+  <p class="hint">
+    Tags print 2.375&#8202;&times;&#8202;3.206&#8202;in, nine to a letter sheet, already
+    sized for the lanyard sleeve. Print at <strong>100% / Actual size</strong> &mdash;
+    not "Fit to page", and <strong>don't set 95% again</strong>, that shrink is baked
+    in now. Cut on the dashed lines.
+  </p>
+</div>
+
+<div class="sheet">
+{% for t in site.data.roster %}
+  {% for m in t.members %}
+    {% assign parts = m | strip | split: " " %}
+    {% if parts.size > 1 %}
+      {% capture display %}{{ parts[0] }} {{ parts | last | slice: 0 }}.{% endcapture %}
+    {% else %}
+      {% assign display = parts[0] %}
+    {% endif %}
+  <div class="tag {{ t.slug }}" style="--team: {{ t.color }}">
+    <div class="name{% if display.size > 12 %} long{% endif %}">{{ display }}</div>
+    <img src="{{ t.image | relative_url }}" alt="{{ t.team }}">
+  </div>
+  {% endfor %}
+{% endfor %}
+</div>
+
+</body>
+</html>

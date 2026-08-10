@@ -1,0 +1,75 @@
+# Team rosters, used only by /roster.html to print lanyard name tags.
+#
+# Names are committed to this public repo — see the note in teams.yml about
+# keeping rosters off pages the teams don't control. The tag only ever prints
+# "First L.", so keep last names abbreviated here too.
+#
+# `image` is the team's tag artwork (2.375in wide at print size, so ~700px
+# wide is plenty; the robot art is ~785px square).
+#
+# `color` tints the tag border and the name. It must never be the only thing
+# telling teams apart — the per-team shape that does that work is drawn into
+# the robot artwork, so it lives in the PNGs, not here. Canonical color/shape
+# table and the reasoning: see "Team colors and shapes" in README.md.
+
+- team: Team Orange
+  slug: orange
+  color: "#e8590c"
+  image: /assets/images/robot-orange.png
+  members:
+    - Albert H.
+    - Gabe R.
+    - Dexter K.
+    - Ed K.
+    - Sai K.
+    - Beau T.
+
+- team: Team Red
+  slug: red
+  color: "#c92a2a"
+  image: /assets/images/robot-red.png
+  members:
+    - Liam S.
+    - Zach Y.
+    - Will A.
+    - Elwood K.
+    - Noah T.
+    - Avery T.
+
+- team: Team Green
+  slug: green
+  color: "#2f9e44"
+  image: /assets/images/robot-green.png
+  members:
+    - Tucker G.
+    - Xavier W.
+    - Louie D.
+    - JJ G.
+    - Jaycee C.
+    - Lilly A.
+
+- team: Team Blue
+  slug: blue
+  color: "#1971c2"
+  image: /assets/images/robot-blue.png
+  members:
+    - Judah L.
+    - Oliver G.
+    - Adalynn K.
+    - Connor B.
+    - Sam L.
+    - Liam E.
+
+# FLL Explore.
+- team: Team Yellow
+  slug: yellow
+  color: "#eab308"
+  image: /assets/images/robot-yellow.png
+  members:
+    - Luke T.
+    - Joey K.
+    - Emma Y.
+    - Drew S.
+    - Barrett K.
+    - Elijah C.
+    - Levi E.

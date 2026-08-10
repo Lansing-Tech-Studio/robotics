@@ -26,6 +26,30 @@ Add an entry, or fill in the `site:` field once a team's blog exists:
 A team with no `site:` shows "Blog coming soon" instead of a link. Set
 `status:` to anything other than `active` to drop a team off the page.
 
+## Team colors and shapes
+
+Each team has a color **and** a shape. Reuse both, together, on anything that
+identifies a team — name tags, bins, table signs, robot cases, jerseys.
+
+| Team   | Hex       | Shape    |
+|--------|-----------|----------|
+| Orange | `#e8590c` | triangle |
+| Red    | `#c92a2a` | circle   |
+| Green  | `#2f9e44` | square   |
+| Blue   | `#1971c2` | diamond  |
+| Yellow | `#eab308` | star     |
+
+The shape is not decoration. Simulated against red-green color blindness these
+five colors collapse into two indistinguishable pairs — orange and yellow both
+read olive, red and green both read khaki — leaving only blue distinct. So a
+kid who can't tell the pairs apart is reading the shape, which means anything
+that uses the color alone excludes them.
+
+The shapes are drawn into the robot artwork in
+[`assets/images/`](assets/images/) (`robot-<color>.png`). Note the vivid hex
+above is a fill and border color; it fails contrast as text on white, so darken
+it for type — `roster.html` uses `color-mix(in srgb, var(--team) 55%, #111)`.
+
 ## Adding a page to the menu
 
 The sidebar comes from `navigation:` in [`_config.yml`](_config.yml). Any entry
