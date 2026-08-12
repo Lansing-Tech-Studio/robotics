@@ -22,6 +22,10 @@ navigation:
         url: /fll/2026-bioglow/missions/
       - title: Build Instructions
         url: /fll/2026-bioglow/build-instructions/
+  # Top level rather than under BIOGLOW: nothing in the squares is tied to a
+  # season, so it carries over to the next one.
+  - title: Competition Bingo
+    url: /bingo.html
 
 markdown: kramdown
 highlighter: rouge
