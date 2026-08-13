@@ -1,0 +1,248 @@
+---
+layout: null
+sitemap: false
+title: Competition Bingo Cards
+card_title: Hackers Competition Bingo Card
+---
+<!DOCTYPE html>
+<!-- Linked from site.navigation, but kept on the standalone layout (no
+     sidebar/header) so the print output is only cards — which is also why the
+     controls carry their own link back to the hub, there's no site chrome to
+     return through. Still noindex/sitemap: false: it's a print utility for
+     coaches, not something worth a search result.
+
+     Recreated from the Canva original at
+     https://www.canva.com/design/DAHR13tLe_s/ — the squares moved to
+     _data/bingo_squares.yml so they can be edited without touching markup. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>{{ page.title }} | {{ site.title }}</title>
+<style>
+  @font-face {
+    font-family: "Montserrat";
+    font-weight: 800;
+    font-display: block;
+    src: url("{{ '/team-logos/montserrat-800.woff2' | relative_url }}") format("woff2");
+  }
+
+  /* One card per letter sheet. 0.4in margins leave 7.7 x 10.2in printable;
+     the card below is 7.2 x 9.4in, so it lands centered with room to spare at
+     100% print scale. */
+  @page { size: letter portrait; margin: 0.4in; }
+
+  :root {
+    /* Card is --grid-w wide including its 0.25in padding, so the grid itself is
+       6.7in and a square is 1.34in. Five rows at --cell-h plus the title, name
+       line and footer come to 9.7in, inside the 10.2in printable height. */
+    --grid-w: 7.2in;
+    --cell-h: 1.45in;
+    --ink: #000;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #eceef1;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+  }
+
+  .controls {
+    padding: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    background: #fff;
+    border-bottom: 1px solid #d5d9df;
+  }
+  .controls .back { font-size: 0.85rem; color: #5a6270; text-decoration: none; }
+  .controls .back:hover { text-decoration: underline; }
+  .controls h1 { font-size: 1.1rem; margin: 0 1rem 0 0; }
+  .controls label { font-size: 0.85rem; }
+  .controls input {
+    width: 4.5rem;
+    margin-left: 0.4rem;
+    padding: 0.3rem 0.5rem;
+    border: 1px solid #b9c0ca;
+    border-radius: 6px;
+    font: inherit;
+  }
+  .controls button {
+    padding: 0.4rem 1rem;
+    border: 1px solid #b9c0ca;
+    border-radius: 999px;
+    background: #fff;
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .controls button:hover { background: #f2f4f7; }
+  .hint { flex-basis: 100%; margin: 0; font-size: 0.8rem; color: #5a6270; }
+
+  .cards { padding: 0.5in 0; }
+
+  .card {
+    width: var(--grid-w);
+    margin: 0 auto 0.5in;
+    padding: 0.25in;
+    background: #fff;
+    break-inside: avoid;
+  }
+  .card:last-child { margin-bottom: 0; }
+  .card + .card { break-before: page; }
+
+  .card h2 {
+    margin: 0;
+    font-family: "Montserrat", system-ui, sans-serif;
+    font-weight: 800;
+    /* Sized to keep the default title on one line across the 6.7in content
+       width — a longer card_title will wrap, drop a couple of points if so. */
+    font-size: 25pt;
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  .name {
+    display: flex;
+    align-items: baseline;
+    gap: 0.15in;
+    /* Indented rather than full-bleed so the rule ends short of the grid, the
+       way the original sits. */
+    margin: 0.12in 0.5in 0.18in 1in;
+    font-family: "Montserrat", system-ui, sans-serif;
+    font-weight: 800;
+    font-size: 20pt;
+  }
+  .name .rule {
+    flex: 1;
+    border-bottom: 2.5px solid var(--ink);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: var(--cell-h);
+    /* Cells draw one border each and the grid draws the outer one; the 1px
+       gap lets adjacent borders sit side by side without doubling up. */
+    border: 3px solid var(--ink);
+  }
+  .cell {
+    border: 1.5px solid var(--ink);
+    padding: 0.06in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.15;
+    overflow: hidden;
+    /* anywhere, not break-word: only `anywhere` shrinks the text's min-content
+       width, and without that the centering flexbox refuses to size the line
+       below its longest word, so "headbands/costumes" spills past the border. */
+    overflow-wrap: anywhere;
+  }
+
+  /* Canva auto-fits each square's text; CSS can't, so the size comes from the
+     character count. Buckets tuned against the original card — a 1.44in-wide
+     square fits roughly this much at each step. */
+  .cell.xl { font-size: 15pt; }
+  .cell.lg { font-size: 11pt; }
+  .cell.md { font-size: 9.5pt; }
+  .cell.sm { font-size: 8pt; }
+
+  .foot {
+    display: flex;
+    align-items: center;
+    gap: 0.15in;
+    margin: 0.12in 0 0;
+    font-size: 10pt;
+    font-weight: 600;
+  }
+  .foot span { flex: 1; text-align: center; }
+  .foot img { width: 0.75in; }
+
+  @media print {
+    body { background: #fff; }
+    .controls { display: none; }
+    .cards { padding: 0; }
+    /* Padding stays: the card's width is fixed, so dropping it here would
+       widen the grid on paper and print a different card than the screen. */
+    .card { margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <a class="back" href="{{ '/' | relative_url }}">&larr; Robotics Home</a>
+  <h1>Bingo cards</h1>
+  <label>How many? <input type="number" id="count" min="1" max="60" value="6"></label>
+  <button type="button" id="go">Generate</button>
+  <p class="hint">
+    Every card uses the same 25 squares in a different random order, so no two
+    players are filling in the same board. One card per letter sheet &mdash; print
+    at <strong>100% / Actual size</strong>, not "Fit to page". Hit
+    <strong>Generate</strong> again for a fresh set.
+  </p>
+</div>
+
+<div class="cards" id="cards"></div>
+
+<script>
+  const SQUARES = {{ site.data.bingo_squares | jsonify }};
+  const CELLS = 25;
+
+  // Fisher-Yates. Slicing to 25 afterwards means _data can hold more than a
+  // card's worth of squares and each card draws its own random subset.
+  function draw() {
+    const a = SQUARES.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a.slice(0, CELLS);
+  }
+
+  const sizeOf = t =>
+    t.length <= 18 ? 'xl' : t.length <= 34 ? 'lg' : t.length <= 52 ? 'md' : 'sm';
+
+  function card() {
+    const el = document.createElement('section');
+    el.className = 'card';
+    el.innerHTML =
+      '<h2>{{ page.card_title | escape }}</h2>' +
+      '<p class="name">Name: <span class="rule"></span></p>' +
+      '<div class="grid"></div>' +
+      '<p class="foot"><span>*Each box counts ONLY if you interact with a ' +
+      'different person each time.</span>' +
+      '<img src="{{ '/assets/images/logo-transparent.png' | relative_url }}" ' +
+      'alt="Lansing Tech Studio"></p>';
+
+    const grid = el.querySelector('.grid');
+    for (const text of draw()) {
+      const cell = document.createElement('div');
+      cell.className = 'cell ' + sizeOf(text);
+      // textContent, so apostrophes and & need no escaping. The zero-width
+      // space gives "headbands/costumes" a tidy break point at the slash —
+      // without it the anywhere-wrap splits mid-word instead.
+      cell.textContent = text.replace(/\//g, '/​');
+      grid.append(cell);
+    }
+    return el;
+  }
+
+  function render() {
+    const n = Math.min(60, Math.max(1, parseInt(count.value, 10) || 1));
+    count.value = n;
+    cards.replaceChildren(...Array.from({ length: n }, card));
+  }
+
+  go.addEventListener('click', render);
+  render();
+</script>
+
+</body>
+</html>

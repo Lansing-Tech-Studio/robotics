@@ -1,0 +1,36 @@
+# Squares for /bingo.html, the competition-day "go talk to other teams" bingo
+# card. Recreated from the Canva original (Hackers Competition Bingo Card).
+#
+# The card is 5x5, so 25 squares get used. Keep at least 25 here; if the list
+# is longer, each card draws a random 25, which is a nice way to add seasonal
+# squares without retiring old ones.
+#
+# Shorter text prints bigger — the page picks a font size from the character
+# count, same trick as the name tags. Anything past ~60 characters lands in the
+# smallest bucket and gets cramped, so keep squares terse.
+
+- Help another team solve a problem
+- Thank a judge
+- 💡 Ask another team what they learned from their project
+- Tell a younger kid who isn’t on a team about FIRST
+- Find a plant made out of Legos at a team’s station
+- 🎯 Ask another team what they are most proud of
+- Ask a team about something they're proud of
+- Find a team with a name that has alliteration
+- Talk to a team with animal headbands/costumes
+- 😂 Make someone from another team laugh
+- Talk to a team with a project about invasive species
+- 🛠️ Ask another team about their robot
+- HIGH FIVE ANOTHER TEAM AT THE ROBOT TABLE
+- Find something your two teams have in common
+- Talk to a team with a project about Michigan
+- Ask a team about their expert
+- Find a team with a forest theme for their board
+- Find a team that gave their robot a cool name
+- Thank a volunteer
+- Clean up someone else’s trash in the cafeteria
+- Encourage another team after a mistake
+- Offer advice to another team about a next step they could take
+- Hand out a team spirit trinket
+- Share your poster with another team
+- Find a team with a project that has NO proposed tech components
