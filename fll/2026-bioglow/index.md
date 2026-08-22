@@ -36,6 +36,8 @@ needs.
 
 - [PyBricks](https://pybricks.com/): what our teams program in.
 - [PyBricks Code Editor](https://code.pybricks.com/): the online IDE for PyBricks.
+  - [PyBricks Git Extension](https://chromewebstore.google.com/detail/pybricks-git/ebfdckalcnjoogjcdpjomkpnbikcdiap): a Chrome extension to make it easier to use GitHub with PyBricks.
+- [Mission Path Planner](https://lansingtechstudio.org/mission-path-planner/): a tool to help plan robot paths.
 
 ## Scoring and judging
 
