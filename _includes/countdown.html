@@ -2,10 +2,11 @@
   Countdown to the event in _data/regionals.yml. Used on the home page and,
   with size="large", on /countdown.html.
 
-  - Days: calendar days from today to the event day, in the event's time zone.
-  - Thursdays: Thursdays from today through the day before the event. Today
-    counts until midnight, so a meeting day stays on the count all day.
-  - Hours: total whole hours left, not the hours after the days.
+  - Clock: the time left as days, hours, minutes and seconds, where a day is
+    a full 24 hours. Ticks every second.
+  - Thursdays: Thursdays from today through the day before the event, by the
+    calendar in the event's time zone. Today counts until midnight, so a
+    meeting day stays on the count all day.
 
   The large version leaves out the heading, since that page's title says it.
 {% endcomment %}
@@ -15,11 +16,17 @@
          aria-label="Countdown to {{ event.name }}">
   {% unless include.size == 'large' %}<h2>Countdown to {{ event.name }}</h2>{% endunless %}
   <p class="countdown-when" data-countdown="when"></p>
-  <ul class="countdown-units" data-countdown="units">
-    <li><span class="countdown-number" data-countdown="days">&ndash;</span> <span class="countdown-label">days</span></li>
-    <li><span class="countdown-number" data-countdown="thursdays">&ndash;</span> <span class="countdown-label">Thursdays</span></li>
-    <li><span class="countdown-number" data-countdown="hours">&ndash;</span> <span class="countdown-label">hours</span></li>
-  </ul>
+  <div data-countdown="units">
+    <ul class="countdown-units">
+      <li><span class="countdown-number" data-countdown="days">&ndash;</span> <span class="countdown-label">days</span></li>
+      <li><span class="countdown-number" data-countdown="hours">&ndash;</span> <span class="countdown-label">hours</span></li>
+      <li><span class="countdown-number" data-countdown="minutes">&ndash;</span> <span class="countdown-label">minutes</span></li>
+      <li><span class="countdown-number" data-countdown="seconds">&ndash;</span> <span class="countdown-label">seconds</span></li>
+    </ul>
+    <ul class="countdown-units countdown-thursdays">
+      <li><span class="countdown-number" data-countdown="thursdays">&ndash;</span> <span class="countdown-label">Thursdays</span></li>
+    </ul>
+  </div>
   <p class="countdown-done" data-countdown="done" hidden>{{ event.name }} are here &mdash; good luck!</p>
 </section>
 
@@ -51,7 +58,12 @@
     justify-content: center;
     gap: 0.75rem 2rem;
   }
-  .countdown-units li { margin: 0; }
+  .countdown-units li { margin: 0; min-width: 3.5rem; }
+  .countdown-thursdays {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+  }
   .countdown-number {
     display: block;
     font-size: 2rem;
@@ -67,9 +79,9 @@
   }
 
   .countdown-large { padding: 2rem 1rem; }
-  .countdown-large .countdown-units { gap: 1.5rem 3.5rem; }
-  .countdown-large .countdown-number { font-size: clamp(3rem, 12vw, 6rem); }
-  .countdown-large .countdown-label { font-size: 1.25rem; }
+  .countdown-large .countdown-units { gap: 1.5rem clamp(1rem, 5vw, 3rem); }
+  .countdown-large .countdown-number { font-size: clamp(2.5rem, 10vw, 5rem); }
+  .countdown-large .countdown-label { font-size: clamp(0.9rem, 3.5vw, 1.25rem); }
   .countdown-large .countdown-done { font-size: 2rem; }
 </style>
 
@@ -78,7 +90,10 @@
     var box = document.querySelector('.countdown');
     var startsAt = new Date(box.getAttribute('data-starts-at'));
     var timeZone = box.getAttribute('data-time-zone');
-    var DAY_MS = 24 * 60 * 60 * 1000;
+    var SECOND_MS = 1000;
+    var MINUTE_MS = 60 * SECOND_MS;
+    var HOUR_MS = 60 * MINUTE_MS;
+    var DAY_MS = 24 * HOUR_MS;
 
     function part(name) {
       return box.querySelector('[data-countdown="' + name + '"]');
@@ -120,14 +135,14 @@
         clearInterval(timer);
         return;
       }
-      var today = calendarDay(now);
-      var eventDay = calendarDay(startsAt);
-      part('days').textContent = Math.round((eventDay - today) / DAY_MS);
-      part('thursdays').textContent = thursdaysBetween(today, eventDay);
-      part('hours').textContent = Math.floor(msLeft / (60 * 60 * 1000));
+      part('days').textContent = Math.floor(msLeft / DAY_MS);
+      part('hours').textContent = Math.floor(msLeft % DAY_MS / HOUR_MS);
+      part('minutes').textContent = Math.floor(msLeft % HOUR_MS / MINUTE_MS);
+      part('seconds').textContent = Math.floor(msLeft % MINUTE_MS / SECOND_MS);
+      part('thursdays').textContent = thursdaysBetween(calendarDay(now), calendarDay(startsAt));
     }
 
     update();
-    timer = setInterval(update, 30 * 1000);
+    timer = setInterval(update, SECOND_MS);
   })();
 </script>
