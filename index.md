@@ -5,6 +5,8 @@ title: Robotics Teams
 Each of our FIRST LEGO League teams keeps its own blog: build notes, what broke,
 and what they tried next. Pick a team to read along.
 
+{% include countdown.html %}
+
 <ul class="team-grid">
 {% assign teams = site.data.teams | where: "status", "active" %}
 {% for team in teams %}

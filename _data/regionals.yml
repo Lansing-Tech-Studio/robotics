@@ -1,0 +1,12 @@
+# Drives the "Countdown to Regionals" box on the home page and /countdown.html.
+# Update these each season.
+#
+# starts_at must carry its UTC offset so every visitor counts down to the same
+# instant whatever their device's time zone. Michigan is -05:00 in winter (EST)
+# and -04:00 in summer (EDT).
+#
+# time_zone is the one the event is in. Days and Thursdays are counted by the
+# calendar there, so a Thursday drops off at midnight Michigan time.
+name: Regionals
+starts_at: "2026-11-15T08:00:00-05:00"
+time_zone: America/Detroit

@@ -1,0 +1,133 @@
+{% comment %}
+  Countdown to the event in _data/regionals.yml. Used on the home page and,
+  with size="large", on /countdown.html.
+
+  - Days: calendar days from today to the event day, in the event's time zone.
+  - Thursdays: Thursdays from today through the day before the event. Today
+    counts until midnight, so a meeting day stays on the count all day.
+  - Hours: total whole hours left, not the hours after the days.
+
+  The large version leaves out the heading, since that page's title says it.
+{% endcomment %}
+{% assign event = site.data.regionals %}
+<section class="countdown{% if include.size == 'large' %} countdown-large{% endif %}"
+         data-starts-at="{{ event.starts_at }}" data-time-zone="{{ event.time_zone }}"
+         aria-label="Countdown to {{ event.name }}">
+  {% unless include.size == 'large' %}<h2>Countdown to {{ event.name }}</h2>{% endunless %}
+  <p class="countdown-when" data-countdown="when"></p>
+  <ul class="countdown-units" data-countdown="units">
+    <li><span class="countdown-number" data-countdown="days">&ndash;</span> <span class="countdown-label">days</span></li>
+    <li><span class="countdown-number" data-countdown="thursdays">&ndash;</span> <span class="countdown-label">Thursdays</span></li>
+    <li><span class="countdown-number" data-countdown="hours">&ndash;</span> <span class="countdown-label">hours</span></li>
+  </ul>
+  <p class="countdown-done" data-countdown="done" hidden>{{ event.name }} are here &mdash; good luck!</p>
+</section>
+
+<style>
+  .countdown {
+    margin: 1.5rem 0;
+    padding: 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    text-align: center;
+  }
+  .countdown h2 {
+    font-size: 1.15rem;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+  .countdown-when {
+    margin: 0.25rem 0 0;
+    color: var(--text-muted);
+  }
+  .countdown-units {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 2rem;
+  }
+  .countdown-units li { margin: 0; }
+  .countdown-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  .countdown-label { color: var(--text-muted); }
+  .countdown-done {
+    margin: 1rem 0 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .countdown-large { padding: 2rem 1rem; }
+  .countdown-large .countdown-units { gap: 1.5rem 3.5rem; }
+  .countdown-large .countdown-number { font-size: clamp(3rem, 12vw, 6rem); }
+  .countdown-large .countdown-label { font-size: 1.25rem; }
+  .countdown-large .countdown-done { font-size: 2rem; }
+</style>
+
+<script>
+  (function () {
+    var box = document.querySelector('.countdown');
+    var startsAt = new Date(box.getAttribute('data-starts-at'));
+    var timeZone = box.getAttribute('data-time-zone');
+    var DAY_MS = 24 * 60 * 60 * 1000;
+
+    function part(name) {
+      return box.querySelector('[data-countdown="' + name + '"]');
+    }
+
+    // The calendar date of an instant in the event's time zone, as a UTC
+    // midnight timestamp, so whole days can be counted by plain subtraction
+    // without a daylight-saving change throwing it off by an hour.
+    var dateParts = new Intl.DateTimeFormat('en-US', {
+      timeZone: timeZone, year: 'numeric', month: 'numeric', day: 'numeric'
+    });
+    function calendarDay(instant) {
+      var p = {};
+      dateParts.formatToParts(instant).forEach(function (x) { p[x.type] = x.value; });
+      return Date.UTC(+p.year, +p.month - 1, +p.day);
+    }
+
+    // Thursdays in [fromDay, toDay), both UTC-midnight calendar days.
+    function thursdaysBetween(fromDay, toDay) {
+      var count = 0;
+      for (var day = fromDay; day < toDay; day += DAY_MS) {
+        if (new Date(day).getUTCDay() === 4) count++;
+      }
+      return count;
+    }
+
+    part('when').textContent = startsAt.toLocaleString('en-US', {
+      timeZone: timeZone, weekday: 'long', month: 'long', day: 'numeric',
+      year: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
+    });
+
+    var timer;
+    function update() {
+      var now = new Date();
+      var msLeft = startsAt - now;
+      if (msLeft <= 0) {
+        part('units').hidden = true;
+        part('done').hidden = false;
+        clearInterval(timer);
+        return;
+      }
+      var today = calendarDay(now);
+      var eventDay = calendarDay(startsAt);
+      part('days').textContent = Math.round((eventDay - today) / DAY_MS);
+      part('thursdays').textContent = thursdaysBetween(today, eventDay);
+      part('hours').textContent = Math.floor(msLeft / (60 * 60 * 1000));
+    }
+
+    update();
+    timer = setInterval(update, 30 * 1000);
+  })();
+</script>
