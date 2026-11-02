@@ -21,6 +21,9 @@ and what they tried next. Pick a team to read along.
     {% if team.site %}
       <p><a href="{{ team.repos }}">See our repos &rarr;</a></p>
     {% endif %}
+    {% if team.site and team.video %}
+      <p><a href="{{ team.site | append: '/design/' | replace: '//design/', '/design/' }}">Project design &rarr;</a></p>
+    {% endif %}
   </li>
 {% endfor %}
 </ul>
