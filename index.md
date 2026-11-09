@@ -5,6 +5,8 @@ title: Robotics Teams
 Each of our FIRST LEGO League teams keeps its own blog: build notes, what broke,
 and what they tried next. Pick a team to read along.
 
+{% include countdown.html %}
+
 <ul class="team-grid">
 {% assign teams = site.data.teams | where: "status", "active" %}
 {% for team in teams %}
@@ -18,6 +20,9 @@ and what they tried next. Pick a team to read along.
     {% endif %}
     {% if team.site %}
       <p><a href="{{ team.repos }}">See our repos &rarr;</a></p>
+    {% endif %}
+    {% if team.site and team.video %}
+      <p><a href="{{ team.site | append: '/design/' | replace: '//design/', '/design/' }}">Project design &rarr;</a></p>
     {% endif %}
   </li>
 {% endfor %}

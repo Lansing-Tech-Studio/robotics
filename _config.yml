@@ -26,6 +26,8 @@ navigation:
   # season, so it carries over to the next one.
   - title: Competition Bingo
     url: /bingo.html
+  - title: Countdown to Regionals
+    url: /countdown.html
 
 markdown: kramdown
 highlighter: rouge

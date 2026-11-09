@@ -7,6 +7,11 @@
 # Rosters aren't listed here anymore: each team introduces its own members on
 # the About page of their own site, which also keeps kids' names off a page
 # they don't control. Previous rosters are in git history if you want them.
+#
+# `video:` is the team's screencast.com share link and `schematic:` an image (or
+# short video) of their robot design under assets/images/. The team's own blog
+# shows both on its /design/ page; here they only decide whether the card gets a
+# "Project design" link.
 
 - name: Team 1
   slug: team1
@@ -14,9 +19,11 @@
   season: 2026
   status: active
   coach: Brendon Thiede
-  logo: /team-logos/team1.png
+  logo: /team-logos/RiptideSticker.png
   site: https://lhh-team1.github.io
   repos: https://github.com/lhh-team1
+  video: https://app.screencast.com/fvjKeBiliDW7w
+  schematic: /assets/images/RiptideSchematic.png
 
 - name: Team 2
   slug: team2
@@ -24,9 +31,11 @@
   season: 2026
   status: active
   coach: Brendon Thiede
-  logo: /team-logos/team2.png
+  logo: /team-logos/TerminatorsSticker.png
   site: https://lhh-team2.github.io
   repos: https://github.com/lhh-team2
+  video: https://app.screencast.com/4SC3iexlshLzS
+  schematic: /assets/images/TerminatorsSchematic.png
 
 - name: Team 3
   slug: team3
@@ -34,9 +43,11 @@
   season: 2026
   status: active
   coach: Brendon Thiede
-  logo: /team-logos/team3.png
+  logo: /team-logos/AtomicAntsSticker.png
   site: https://lhh-team3.github.io
   repos: https://github.com/lhh-team3
+  video: https://app.screencast.com/honCJHwmYXtNs
+  schematic: /assets/images/AtomicAntsSchematic.gif
 
 - name: Team 4
   slug: team4
@@ -44,6 +55,8 @@
   season: 2026
   status: active
   coach: Brendon Thiede
-  logo: /team-logos/team4.png
+  logo: /team-logos/CoolFireSharksSticker.png
   site: https://lhh-team4.github.io
   repos: https://github.com/lhh-team4
+  video: https://app.screencast.com/Vl1qsPT5BOw3l
+  schematic: /assets/images/CoolFireSharksSchematic.gif
