@@ -122,6 +122,11 @@ title: Team Roster — Name Tags
   {% for t in site.data.roster %}
   body:has(#f-{{ t.slug }}:checked) .tag:not(.{{ t.slug }}) { display: none; }
   {% endfor %}
+
+  /* Swap columns 1 and 3 (mirrors each row for printing tag backs). With three
+     columns, rtl flow is exactly that swap, and it survives the team filter. */
+  body:has(#swap-cols:checked) .sheet { direction: rtl; }
+  .tag { direction: ltr; }
 </style>
 </head>
 <body>
@@ -132,6 +137,7 @@ title: Team Roster — Name Tags
   {% for t in site.data.roster %}
   <label><input type="radio" name="team" id="f-{{ t.slug }}"><span>{{ t.team }}</span></label>
   {% endfor %}
+  <label><input type="checkbox" id="swap-cols"><span>Swap columns 1 &amp; 3</span></label>
   <p class="hint">
     Tags print 2.375&#8202;&times;&#8202;3.206&#8202;in, nine to a letter sheet, already
     sized for the lanyard sleeve. Print at <strong>100% / Actual size</strong> &mdash;

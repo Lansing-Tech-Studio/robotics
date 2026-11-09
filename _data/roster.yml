@@ -12,10 +12,10 @@
 # the robot artwork, so it lives in the PNGs, not here. Canonical color/shape
 # table and the reasoning: see "Team colors and shapes" in README.md.
 
-- team: Team Orange
-  slug: orange
+- team: Riptide
+  slug: riptide
   color: "#e8590c"
-  image: /assets/images/robot-orange.png
+  image: /assets/images/Riptide.png
   members:
     - Albert H.
     - Gabe R.
@@ -24,10 +24,10 @@
     - Sai K.
     - Beau T.
 
-- team: Team Red
-  slug: red
+- team: Terminators
+  slug: terminators
   color: "#c92a2a"
-  image: /assets/images/robot-red.png
+  image: /assets/images/Terminators.png
   members:
     - Liam S.
     - Zach Y.
@@ -36,10 +36,10 @@
     - Noah T.
     - Avery T.
 
-- team: Team Green
-  slug: green
+- team: Atomic Ants
+  slug: atomic-ants
   color: "#2f9e44"
-  image: /assets/images/robot-green.png
+  image: /assets/images/AtomicAnts.png
   members:
     - Tucker G.
     - Xavier W.
@@ -48,10 +48,10 @@
     - Jaycee C.
     - Lilly A.
 
-- team: Team Blue
-  slug: blue
+- team: Cool Fire Sharks
+  slug: cool-fire-sharks
   color: "#1971c2"
-  image: /assets/images/robot-blue.png
+  image: /assets/images/CoolFireSharks.png
   members:
     - Judah L.
     - Oliver G.
