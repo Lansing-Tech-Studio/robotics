@@ -66,10 +66,11 @@
   color: "#eab308"
   image: /assets/images/Thunderbolts.jpg
   members:
-    - Elijah C.
+    - Eli C.
     - Adele D.
     - Barrett K.
     - Levi E.
+    - Nari B.
 
 - team: Thunderbolts 2
   slug: thunderbolts-2
@@ -77,6 +78,6 @@
   image: /assets/images/Thunderbolts.jpg
   members:
     - Drew S.
-    - Lex K.
     - Luke T.
     - Emma Y.
+    - Lex K.
