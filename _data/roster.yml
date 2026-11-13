@@ -61,16 +61,22 @@
     - Liam E.
 
 # FLL Explore.
-- team: Team Yellow
-  slug: yellow
+- team: Thunderbolts 1
+  slug: thunderbolts-1
   color: "#eab308"
-  image: /assets/images/robot-yellow.png
+  image: /assets/images/Thunderbolts.jpg
   members:
-    - Luke T.
-    - Joey K.
-    - Emma Y.
-    - Drew S.
-    - Barrett K.
     - Elijah C.
-    - Levi E.
     - Adele D.
+    - Barrett K.
+    - Levi E.
+
+- team: Thunderbolts 2
+  slug: thunderbolts-2
+  color: "#eab308"
+  image: /assets/images/Thunderbolts.jpg
+  members:
+    - Drew S.
+    - Lex K.
+    - Luke T.
+    - Emma Y.
