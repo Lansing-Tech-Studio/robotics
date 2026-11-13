@@ -117,10 +117,11 @@ title: Team Roster — Name Tags
     .tag { outline-color: #d9dde2; }
   }
 
-  /* Team filter, no JS: the checked radio hides every other team's tags. */
-  body:has(#f-all:checked) .tag { display: flex; }
+  /* Team filter, no JS: nothing checked shows every team; checking any team
+     hides the rest. Slugs must be unique per team or two boxes act as one. */
+  body:has(.team-filter:checked) .tag { display: none; }
   {% for t in site.data.roster %}
-  body:has(#f-{{ t.slug }}:checked) .tag:not(.{{ t.slug }}) { display: none; }
+  body:has(#f-{{ t.slug }}:checked) .tag.{{ t.slug }} { display: flex; }
   {% endfor %}
 
   /* Swap columns 1 and 3 (mirrors each row for printing tag backs). With three
@@ -133,13 +134,12 @@ title: Team Roster — Name Tags
 
 <div class="controls">
   <h1>Name tags</h1>
-  <label><input type="radio" name="team" id="f-all" checked><span>All teams</span></label>
   {% for t in site.data.roster %}
-  <label><input type="radio" name="team" id="f-{{ t.slug }}"><span>{{ t.team }}</span></label>
+  <label><input type="checkbox" class="team-filter" id="f-{{ t.slug }}"><span>{{ t.team }}</span></label>
   {% endfor %}
   <label><input type="checkbox" id="swap-cols"><span>Swap columns 1 &amp; 3</span></label>
   <p class="hint">
-    Tags print 2.375&#8202;&times;&#8202;3.206&#8202;in, nine to a letter sheet, already
+    Check the teams to print; leave them all unchecked to print everyone. Tags print 2.375&#8202;&times;&#8202;3.206&#8202;in, nine to a letter sheet, already
     sized for the lanyard sleeve. Print at <strong>100% / Actual size</strong> &mdash;
     not "Fit to page", and <strong>don't set 95% again</strong>, that shrink is baked
     in now. Cut on the dashed lines.
