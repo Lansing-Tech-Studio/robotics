@@ -42,7 +42,18 @@ title: Regionals Schedule
   /* Grid view: wider than the page, so it scrolls sideways with the row
      labels pinned. */
   .grid-scroll { overflow-x: auto; margin: 1rem 0; border: 1px solid var(--border-color); }
-  .schedule-grid { width: max-content; margin: 0; border-collapse: separate; border-spacing: 0; font-size: 0.85rem; }
+  /* The theme makes every table `display: block; overflow-x: auto`, which
+     turns the table into its own scroll container and stops the sticky row
+     labels from following .grid-scroll. Undo that here. */
+  .schedule-grid {
+    display: table;
+    overflow: visible;
+    width: max-content;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.85rem;
+  }
   .schedule-grid th, .schedule-grid td {
     padding: 0.4rem 0.5rem;
     text-align: center;
@@ -60,6 +71,7 @@ title: Regionals Schedule
     z-index: 1;
     text-align: left;
     background: var(--bg-secondary);
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.12);
     border-left: 6px solid var(--team, var(--border-color));
     max-width: 8.5rem;
   }
