@@ -30,6 +30,8 @@ navigation:
     url: /bingo.html
   - title: Countdown to Regionals
     url: /countdown.html
+  - title: Regionals Schedule
+    url: /schedule.html
 
 markdown: kramdown
 highlighter: rouge

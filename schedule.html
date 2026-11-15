@@ -1,0 +1,53 @@
+---
+title: Regionals Schedule
+---
+<!-- Competition-day schedule from _data/schedule.yml: the competition-wide
+     events, then one table per team whose sheet has been entered. Team name,
+     FIRST number and color come from _data/roster.yml via the shared slug. -->
+<style>
+  .schedule td:first-child, .schedule th:first-child { white-space: nowrap; width: 11rem; }
+  .schedule-team {
+    margin-top: 2rem;
+    padding-left: 0.75rem;
+    border-left: 6px solid var(--team);
+  }
+  .schedule-team h2 { margin-top: 0; }
+  .schedule-team .event-number { margin: 0 0 0.5rem; color: var(--text-muted); }
+  .schedule-note {
+    margin: 1.5rem 0;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--text-color);
+    font-weight: 700;
+  }
+  @media (max-width: 600px) {
+    .schedule td:first-child, .schedule th:first-child { width: auto; }
+  }
+</style>
+
+<p class="schedule-note">NOTE: {{ site.data.schedule.note }}</p>
+
+<h2>Competition-wide events</h2>
+<table class="schedule">
+  <thead><tr><th>Time</th><th>Event</th></tr></thead>
+  <tbody>
+  {% for e in site.data.schedule.common %}
+    <tr><td>{{ e.time }}</td><td>{{ e.event }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% for s in site.data.schedule.teams %}
+  {% assign t = site.data.roster | where: "slug", s.slug | first %}
+<section class="schedule-team" style="--team: {{ t.color }}">
+  <h2>{{ t.team }} (#{{ t.number }})</h2>
+  <p class="event-number">Event team # {{ s.event_number }}</p>
+  <table class="schedule">
+    <thead><tr><th>Time</th><th>Team-specific event</th></tr></thead>
+    <tbody>
+    {% for e in s.events %}
+      <tr><td>{{ e.time }}</td><td>{{ e.event }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endfor %}
