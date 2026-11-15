@@ -8,8 +8,8 @@
 # `event_number` is the "Team #" the event assigned for the day, which is not
 # the FIRST team number.
 #
-# Only teams whose sheet has been entered are listed; add the others in the
-# same shape.
+# Only teams whose sheet has been entered are listed (the four FLL Challenge
+# teams); add others in the same shape.
 
 note: >-
   All times are our best estimates. Try to be early for each event, but times
@@ -28,6 +28,34 @@ common:
     event: Awards Ceremony
 
 teams:
+  - slug: riptide
+    event_number: 20
+    events:
+      - time: "9:20 AM"
+        event: Judging
+      - time: "11:05 AM"
+        event: Robot Game, Green table
+      - time: "12:05 PM"
+        event: Robot Game, Green table
+      - time: "1:40 PM"
+        event: Robot Game, Yellow table
+      - time: "2:30 PM"
+        event: Robot Game, Yellow table
+
+  - slug: terminators
+    event_number: 14
+    events:
+      - time: "10:25 AM"
+        event: Robot Game, Yellow table
+      - time: "11:40 AM"
+        event: Robot Game, Yellow table
+      - time: "2:00 PM"
+        event: Judging
+      - time: "3:05 PM"
+        event: Robot Game, Green table
+      - time: "3:35 PM"
+        event: Robot Game, Green table
+
   - slug: atomic-ants
     event_number: 8
     events:
@@ -40,4 +68,18 @@ teams:
       - time: "2:10 PM"
         event: Robot Game, Yellow table
       - time: "3:10 PM"
+        event: Robot Game, Yellow table
+
+  - slug: cool-fire-sharks
+    event_number: 24
+    events:
+      - time: "10:05 AM"
+        event: Judging
+      - time: "11:25 AM"
+        event: Robot Game, Green table
+      - time: "12:15 PM"
+        event: Robot Game, Green table
+      - time: "1:40 PM"
+        event: Robot Game, Yellow table
+      - time: "2:20 PM"
         event: Robot Game, Yellow table
