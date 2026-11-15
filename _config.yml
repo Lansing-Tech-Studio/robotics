@@ -15,6 +15,8 @@ remote_theme: Lansing-Tech-Studio/lts-team-blog-theme@v1
 navigation:
   - title: Robotics Home
     url: /
+  - title: Teams
+    url: /teams.html
   - title: FLL BIOGLOW (2026-27)
     url: /fll/2026-bioglow/
     subnav:

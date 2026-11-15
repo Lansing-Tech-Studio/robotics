@@ -1,0 +1,43 @@
+---
+title: Teams
+---
+<!-- Team list: name, official FIRST number, program and artwork, straight from
+     _data/roster.yml. Member names are deliberately not shown here; see the
+     note in _data/teams.yml about keeping rosters off the public hub pages.
+     The page layout prints the <h1>; .team-grid / .team-card come from the
+     shared theme, the same cards the front page uses. -->
+<style>
+  .team-list .team-card { border: 4px solid var(--team); }
+  .team-list .team-card img {
+    width: 100%;
+    max-width: 160px;
+    aspect-ratio: 1;
+    object-fit: contain;
+  }
+  /* Same darkening as the name tags: the vivid team color is too light as
+     text on a light card (yellow especially). */
+  .team-list .team-card h2 { color: color-mix(in srgb, var(--team) 55%, #111); }
+  .team-list .number {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .team-list .program {
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+</style>
+
+<p>Our <em>FIRST</em> LEGO League teams this season, with their official <em>FIRST</em> team numbers.</p>
+
+<ul class="team-grid team-list">
+{% for t in site.data.roster %}
+  <li class="team-card" style="--team: {{ t.color }}">
+    <img src="{{ t.image | relative_url }}" alt="{{ t.team }} team artwork">
+    <h2>{{ t.team }}</h2>
+    <p class="number">#{{ t.number }}</p>
+    <p class="program">{{ t.program }}</p>
+  </li>
+{% endfor %}
+</ul>

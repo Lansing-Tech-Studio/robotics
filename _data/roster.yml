@@ -1,4 +1,5 @@
-# Team rosters, used only by /roster.html to print lanyard name tags.
+# Team rosters. /roster.html prints lanyard name tags from this; /teams.html
+# lists each team's name, FIRST number, program and artwork (never `members`).
 #
 # Names are committed to this public repo — see the note in teams.yml about
 # keeping rosters off pages the teams don't control. The tag only ever prints
@@ -13,10 +14,12 @@
 # table and the reasoning: see "Team colors and shapes" in README.md.
 #
 # `number` is the team's official FIRST team number, from the FIRST Dashboard.
+# `program` is the FIRST program the team is registered in.
 
 - team: Riptide
   slug: riptide
   number: 54207
+  program: FLL Challenge
   color: "#e8590c"
   image: /assets/images/Riptide.png
   members:
@@ -30,6 +33,7 @@
 - team: Terminators
   slug: terminators
   number: 68666
+  program: FLL Challenge
   color: "#c92a2a"
   image: /assets/images/Terminators.png
   members:
@@ -43,6 +47,7 @@
 - team: Atomic Ants
   slug: atomic-ants
   number: 71259
+  program: FLL Challenge
   color: "#2f9e44"
   image: /assets/images/AtomicAnts.png
   members:
@@ -56,6 +61,7 @@
 - team: Cool Fire Sharks
   slug: cool-fire-sharks
   number: 72067
+  program: FLL Challenge
   color: "#1971c2"
   image: /assets/images/CoolFireSharks.png
   members:
@@ -70,6 +76,7 @@
 - team: Thunderbolts 1
   slug: thunderbolts-1
   number: 36460
+  program: FLL Explore
   color: "#eab308"
   image: /assets/images/Thunderbolts.jpg
   members:
@@ -82,6 +89,7 @@
 - team: Thunderbolts 2
   slug: thunderbolts-2
   number: 37423
+  program: FLL Explore
   color: "#eab308"
   image: /assets/images/Thunderbolts.jpg
   members:
