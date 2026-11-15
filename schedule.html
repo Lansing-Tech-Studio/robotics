@@ -3,9 +3,9 @@ title: Regionals Schedule
 ---
 <!-- Competition-day schedule from _data/schedule.yml, in two views picked by
      the radio buttons at the top (no JS, same :has() trick as roster.html):
+       - Grid (default): one row for competition-wide and one per team, one
+         column per start time.
        - By team: the competition-wide events, then one table per team.
-       - Grid: one row for competition-wide and one per team, one column per
-         start time.
      Team name, FIRST number and color come from _data/roster.yml via the
      shared slug. -->
 <style>
@@ -20,9 +20,10 @@ title: Regionals Schedule
   .view-picker input { margin-right: 0.4rem; }
   .view-picker label:has(input:checked) { font-weight: 700; border-color: var(--primary-color); }
 
-  .view-grid { display: none; }
-  body:has(#view-grid:checked) .view-grid { display: block; }
-  body:has(#view-grid:checked) .view-list { display: none; }
+  /* Grid is the default view; picking "By team" swaps them. */
+  .view-list { display: none; }
+  body:has(#view-list:checked) .view-list { display: block; }
+  body:has(#view-list:checked) .view-grid { display: none; }
 
   .schedule td:first-child, .schedule th:first-child { white-space: nowrap; width: 11rem; }
   .schedule-team {
@@ -93,8 +94,8 @@ title: Regionals Schedule
 <p class="schedule-note">NOTE: {{ sched.note }}</p>
 
 <div class="view-picker" role="radiogroup" aria-label="Schedule view">
-  <label><input type="radio" name="view" id="view-list" checked>By team</label>
-  <label><input type="radio" name="view" id="view-grid">Grid</label>
+  <label><input type="radio" name="view" id="view-grid" checked>Grid</label>
+  <label><input type="radio" name="view" id="view-list">By team</label>
 </div>
 
 <div class="view-list">
