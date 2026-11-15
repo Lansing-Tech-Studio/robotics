@@ -51,3 +51,12 @@ title: Regionals Schedule
   </table>
 </section>
 {% endfor %}
+
+{% if site.data.schedule.coach_notes %}
+<h2>Notes from the coaches meeting</h2>
+<ul>
+  {% for n in site.data.schedule.coach_notes %}
+  <li>{{ n }}</li>
+  {% endfor %}
+</ul>
+{% endif %}

@@ -15,6 +15,19 @@ note: >-
   All times are our best estimates. Try to be early for each event, but times
   may slip due to unforeseen circumstances.
 
+# `coach_notes` are the notes from the morning coaches meeting, listed at the
+# bottom of the page.
+coach_notes:
+  - Anna is the head ref, the same person as last year at Waverly.
+  - Bubbles on mats - if you notice something, tell the ref.
+  - Know the team number.
+  - Show up 5 minutes early for matches.
+  - Show up 10 minutes early for judging. Make sure you have your robot.
+  - 22 teams.
+  - Mats are taped where it is allowed.
+  - The ant butt is cosmetic.
+  - Football list sheet is good.
+
 common:
   - time: "8:00 - 8:15 AM"
     event: Coaches Meeting
