@@ -3,6 +3,10 @@
 #
 # `common` is the competition-wide part, the same for every team.
 #
+# Every event has `time` (as printed on the sheet) and `at`, its start time in
+# 24-hour HH:MM. `at` is what the grid view sorts its columns by and uses to
+# line events up, so it must be zero-padded ("09:20", not "9:20").
+#
 # `teams` holds each team's own sheet. `slug` must match the team's slug in
 # roster.yml (the page takes the name, FIRST number and color from there).
 # `event_number` is the "Team #" the event assigned for the day, which is not
@@ -32,14 +36,19 @@ coach_notes:
 
 common:
   - time: "8:00 - 8:15 AM"
+    at: "08:00"
     event: Coaches Meeting
   - time: "9:00 - 9:15 AM"
+    at: "09:00"
     event: Opening Ceremonies
   - time: "12:25 - 1:10 PM"
+    at: "12:25"
     event: Lunch - no robot games or judging
   - time: "4:00 - 4:30 PM"
+    at: "16:00"
     event: Break down pit, pack out
   - time: "4:30 PM"
+    at: "16:30"
     event: Awards Ceremony
 
 teams:
@@ -47,54 +56,74 @@ teams:
     event_number: 20
     events:
       - time: "9:20 AM"
+        at: "09:20"
         event: Judging
       - time: "11:05 AM"
+        at: "11:05"
         event: Robot Game, Green table
       - time: "12:05 PM"
+        at: "12:05"
         event: Robot Game, Green table
       - time: "1:40 PM"
+        at: "13:40"
         event: Robot Game, Yellow table
       - time: "2:30 PM"
+        at: "14:30"
         event: Robot Game, Yellow table
 
   - slug: terminators
     event_number: 14
     events:
       - time: "10:25 AM"
+        at: "10:25"
         event: Robot Game, Yellow table
       - time: "11:40 AM"
+        at: "11:40"
         event: Robot Game, Yellow table
       - time: "2:00 PM"
+        at: "14:00"
         event: Judging
       - time: "3:05 PM"
+        at: "15:05"
         event: Robot Game, Green table
       - time: "3:35 PM"
+        at: "15:35"
         event: Robot Game, Green table
 
   - slug: atomic-ants
     event_number: 8
     events:
       - time: "9:50 AM"
+        at: "09:50"
         event: Robot Game, Green table
       - time: "11:40 AM"
+        at: "11:40"
         event: Judging
       - time: "1:25 PM"
+        at: "13:25"
         event: Robot Game, Green table
       - time: "2:10 PM"
+        at: "14:10"
         event: Robot Game, Yellow table
       - time: "3:10 PM"
+        at: "15:10"
         event: Robot Game, Yellow table
 
   - slug: cool-fire-sharks
     event_number: 24
     events:
       - time: "10:05 AM"
+        at: "10:05"
         event: Judging
       - time: "11:25 AM"
+        at: "11:25"
         event: Robot Game, Green table
       - time: "12:15 PM"
+        at: "12:15"
         event: Robot Game, Green table
       - time: "1:40 PM"
+        at: "13:40"
         event: Robot Game, Yellow table
       - time: "2:20 PM"
+        at: "14:20"
         event: Robot Game, Yellow table
