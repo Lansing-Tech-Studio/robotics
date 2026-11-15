@@ -11,9 +11,12 @@
 # telling teams apart — the per-team shape that does that work is drawn into
 # the robot artwork, so it lives in the PNGs, not here. Canonical color/shape
 # table and the reasoning: see "Team colors and shapes" in README.md.
+#
+# `number` is the team's official FIRST team number, from the FIRST Dashboard.
 
 - team: Riptide
   slug: riptide
+  number: 54207
   color: "#e8590c"
   image: /assets/images/Riptide.png
   members:
@@ -26,6 +29,7 @@
 
 - team: Terminators
   slug: terminators
+  number: 68666
   color: "#c92a2a"
   image: /assets/images/Terminators.png
   members:
@@ -38,6 +42,7 @@
 
 - team: Atomic Ants
   slug: atomic-ants
+  number: 71259
   color: "#2f9e44"
   image: /assets/images/AtomicAnts.png
   members:
@@ -50,6 +55,7 @@
 
 - team: Cool Fire Sharks
   slug: cool-fire-sharks
+  number: 72067
   color: "#1971c2"
   image: /assets/images/CoolFireSharks.png
   members:
@@ -63,6 +69,7 @@
 # FLL Explore.
 - team: Thunderbolts 1
   slug: thunderbolts-1
+  number: 36460
   color: "#eab308"
   image: /assets/images/Thunderbolts.jpg
   members:
@@ -74,6 +81,7 @@
 
 - team: Thunderbolts 2
   slug: thunderbolts-2
+  number: 37423
   color: "#eab308"
   image: /assets/images/Thunderbolts.jpg
   members:
