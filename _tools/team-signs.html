@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Team signs</title>
+<!--
+  One letter page per team: name + team QR on top, logo, then the Lansing Tech
+  Studio QR + "Lansing Homeschool Hackers". Rebuild the PDF with:
+
+    google-chrome --headless --no-pdf-header-footer \
+      --print-to-pdf=assets/docs/team-signs.pdf _tools/team-signs.html
+-->
+<style>
+  @page { size: letter; margin: 1in; }
+  body { margin: 0; font-family: system-ui, "Segoe UI", Roboto, sans-serif; font-weight: 800; color: #000; }
+  /* 9in = letter minus the @page margins; the tallest logo (Terminators) leaves
+     just over 1.1in above and below, which is what caps the QR size. */
+  .sign { height: 9in; display: grid; grid-template-rows: 1fr auto 1fr; }
+  .sign + .sign { break-before: page; }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 0.2in; white-space: nowrap; }
+  .row.top { align-self: start; font-size: 46pt; }
+  .row.bottom { align-self: end; font-size: 25pt; }
+  .qr { height: 1.1in; width: 1.1in; }
+  .logo { width: 100%; display: block; }
+</style>
+</head>
+<body>
+<script>
+  // Image files are the team name with the spaces removed.
+  for (const team of ["Riptide", "Terminators", "Atomic Ants", "Cool Fire Sharks"]) {
+    const file = team.replaceAll(" ", "");
+    document.body.insertAdjacentHTML("beforeend", `
+      <section class="sign">
+        <div class="row top">
+          <span>${team}</span>
+          <img class="qr" src="../assets/images/qr-codes/${file}.png" alt="${team} QR code">
+        </div>
+        <img class="logo" src="../assets/images/${file}.png" alt="${team} logo">
+        <div class="row bottom">
+          <img class="qr" src="../assets/images/qr-codes/lansingtechstudio.png" alt="Lansing Tech Studio QR code">
+          <span>Lansing Homeschool Hackers</span>
+        </div>
+      </section>`);
+  }
+</script>
+</body>
+</html>
