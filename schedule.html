@@ -84,6 +84,11 @@ title: Regionals Schedule
   .schedule-grid td.yellow  { background: #fdeeb0; }
   .schedule-grid td.judging { background: #d5ddfb; font-weight: 700; }
 
+  .schedule-grid .past { display: none; }
+  .past-toggle { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1rem; margin: 0.5rem 0; }
+  .past-toggle label { cursor: pointer; }
+  .past-status { color: var(--text-muted); font-size: 0.9rem; }
+
   @media (max-width: 600px) {
     .schedule td:first-child, .schedule th:first-child { width: auto; }
   }
@@ -134,12 +139,19 @@ title: Regionals Schedule
 
 <div class="view-grid">
 <p>Scroll sideways to see the whole day. Each column is a start time.</p>
+<p class="past-toggle" hidden>
+  <label><input type="checkbox" id="show-past"> Show past times</label>
+  <span class="past-status" aria-live="polite"></span>
+</p>
 <div class="grid-scroll">
-<table class="schedule-grid">
+<table class="schedule-grid" data-event-date="{{ site.data.regionals.starts_at | slice: 0, 10 }}" data-time-zone="{{ site.data.regionals.time_zone }}">
   <thead>
     <tr>
       <th scope="col">Team</th>
-      {% for c in cols %}<th scope="col">{{ "2026-01-01 " | append: c | date: "%-I:%M %p" }}</th>{% endfor %}
+      {% for c in cols %}
+        {% assign e = sched.common | where: "at", c | first %}
+        <th scope="col" data-col="{{ forloop.index0 }}" data-until="{{ e.end | default: c }}">{{ "2026-01-01 " | append: c | date: "%-I:%M %p" }}</th>
+      {% endfor %}
     </tr>
   </thead>
   <tbody>
@@ -147,7 +159,7 @@ title: Regionals Schedule
       <th scope="row">Competition-wide</th>
       {% for c in cols %}
         {% assign e = sched.common | where: "at", c | first %}
-        {% if e %}<td class="common">{{ e.event }}<small>{{ e.time }}</small></td>{% else %}<td></td>{% endif %}
+        {% if e %}<td class="common" data-col="{{ forloop.index0 }}">{{ e.event }}<small>{{ e.time }}</small></td>{% else %}<td data-col="{{ forloop.index0 }}"></td>{% endif %}
       {% endfor %}
     </tr>
     {% for s in sched.teams %}
@@ -161,8 +173,8 @@ title: Regionals Schedule
           {% elsif e.event contains "Yellow" %}{% assign kind = "yellow" %}
           {% elsif e.event contains "Judging" %}{% assign kind = "judging" %}
           {% else %}{% assign kind = "common" %}{% endif %}
-          <td class="{{ kind }}">{{ e.event | replace: ", ", "<br>" }}</td>
-        {% else %}<td></td>{% endif %}
+          <td class="{{ kind }}" data-col="{{ forloop.index0 }}">{{ e.event | replace: ", ", "<br>" }}</td>
+        {% else %}<td data-col="{{ forloop.index0 }}"></td>{% endif %}
       {% endfor %}
     </tr>
     {% endfor %}
@@ -170,6 +182,61 @@ title: Regionals Schedule
 </table>
 </div>
 </div>
+
+<script>
+  // Grid view: hide columns whose time has passed, on the day of the event
+  // only, by the clock in the event's time zone (not the device's). A column
+  // is past once its data-until (the end of a ranged event, otherwise the
+  // start time) has gone by. Re-checked every 30 seconds and whenever the tab
+  // comes back into view, so it keeps up without a refresh. Without JS every
+  // column simply stays visible.
+  (function () {
+    var grid = document.querySelector('.schedule-grid');
+    var toggle = document.querySelector('.past-toggle');
+    var showPast = document.getElementById('show-past');
+    var status = document.querySelector('.past-status');
+    if (!grid || !toggle || !showPast) return;
+
+    var heads = Array.prototype.slice.call(grid.querySelectorAll('thead th[data-col]'));
+    var fmt;
+    try {
+      fmt = new Intl.DateTimeFormat('en-CA', {
+        timeZone: grid.dataset.timeZone, hourCycle: 'h23',
+        year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'
+      });
+    } catch (e) { return; }
+
+    function eventClock() {
+      var p = {};
+      fmt.formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
+      return { date: p.year + '-' + p.month + '-' + p.day, time: p.hour + ':' + p.minute };
+    }
+
+    function update() {
+      var now = eventClock();
+      var isEventDay = now.date === grid.dataset.eventDate;
+      var past = 0;
+      heads.forEach(function (th) {
+        // "HH:MM" strings are zero-padded, so they compare in time order.
+        var isPast = isEventDay && th.dataset.until <= now.time;
+        if (isPast) past++;
+        var hide = isPast && !showPast.checked;
+        grid.querySelectorAll('[data-col="' + th.dataset.col + '"]').forEach(function (cell) {
+          cell.classList.toggle('past', hide);
+        });
+      });
+      toggle.hidden = past === 0;
+      if (showPast.checked || past === 0) status.textContent = '';
+      else if (past === heads.length) status.textContent = 'Everything on the schedule has passed.';
+      else status.textContent = past + (past === 1 ? ' past time hidden.' : ' past times hidden.');
+    }
+
+    showPast.addEventListener('change', update);
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) update(); });
+    setInterval(update, 30000);
+    update();
+  })();
+</script>
 
 {% if sched.coach_notes %}
 <h2>Notes from the coaches meeting</h2>
