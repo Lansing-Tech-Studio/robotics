@@ -32,6 +32,8 @@ navigation:
     url: /countdown.html
   - title: Regionals Schedule
     url: /schedule.html
+  - title: Explore Jamboree Schedule
+    url: /jamboree.html
 
 markdown: kramdown
 highlighter: rouge

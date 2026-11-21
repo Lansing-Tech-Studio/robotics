@@ -1,0 +1,122 @@
+---
+title: Explore Jamboree Schedule
+---
+<!-- FLL Explore jamboree schedule from _data/jamboree.yml: our teams and their
+     day first, then the full sheet (every group's rotations, stations and
+     teams). A team is "ours" when its number matches a FIRST team number in
+     _data/roster.yml. Our rows are marked with bold text and a label, never
+     with the tint alone. -->
+<style>
+  .jam-ours {
+    margin: 1.5rem 0;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--text-color);
+  }
+  .jam-ours p { margin: 0 0 0.5rem; }
+  .jam-ours ul { margin: 0; }
+  .jam-ours small, .jam-teams small { color: var(--text-muted); }
+  .jam-note { color: var(--text-muted); }
+
+  .jam-day td:first-child, .jam-day th:first-child { white-space: nowrap; }
+  .jam-rotations th, .jam-rotations td { text-align: center; }
+  .jam-rotations th[scope="row"] { text-align: left; white-space: nowrap; }
+  .jam-rotations small { display: block; color: var(--text-muted); }
+  .jam-rotations td.ours { background: #fdeeb0; font-weight: 700; }
+
+  .jam-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1rem;
+  }
+  .jam-group {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+  }
+  .jam-group.ours { border: 2px solid var(--text-color); }
+  .jam-group h3 { margin: 0; }
+  .jam-group .order { margin: 0.25rem 0 0.5rem; font-size: 0.9rem; color: var(--text-muted); }
+  .jam-teams { list-style: none; margin: 0; padding: 0; }
+  .jam-teams li { margin: 0; padding: 0.2rem 0; }
+  .jam-teams li.ours { font-weight: 700; }
+</style>
+
+{% assign jam = site.data.jamboree %}
+{% assign our_group = jam.groups | where: "letter", jam.our_group | first %}
+
+<p>{{ jam.name }}, for our <em>FIRST</em> LEGO League Explore teams.</p>
+
+<div class="jam-ours">
+  <p><strong>Our teams are in Group {{ jam.our_group }}:</strong></p>
+  <ul>
+  {% for team in our_group.teams %}
+    {% assign mine = site.data.roster | where: "number", team.number | first %}
+    {% if mine %}
+    <li><strong>{{ mine.team }}</strong> (#{{ team.number }}){% unless mine.team == team.name %} <small>&ndash; listed on the sheet as &ldquo;{{ team.name }}&rdquo;</small>{% endunless %}</li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+</div>
+
+<h2>Our day (Group {{ jam.our_group }})</h2>
+<table class="jam-day">
+  <thead><tr><th>When</th><th>What</th><th>Where</th></tr></thead>
+  <tbody>
+    <tr><td>{{ jam.opening.time }}</td><td>{{ jam.opening.event }}</td><td>{{ jam.opening.room }}</td></tr>
+    {% for rot in jam.rotations %}
+      {% for st in jam.stations %}
+        {% if rot[st.key] == jam.our_group %}
+    <tr><td>Rotation {{ forloop.parentloop.index }}</td><td>{{ st.name }}</td><td>{{ st.room }}</td></tr>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    <tr><td>{{ jam.closing.time }}</td><td>{{ jam.closing.event }}</td><td>{{ jam.closing.room }}</td></tr>
+  </tbody>
+</table>
+<p class="jam-note">{{ jam.note }}</p>
+
+<h2>Rotation stations</h2>
+<ol>
+  {% for st in jam.stations %}
+  <li><strong>{{ st.name }}</strong> &ndash; {{ st.room }}. {{ st.description }}</li>
+  {% endfor %}
+</ol>
+
+<h2>All groups</h2>
+<table class="jam-rotations">
+  <thead>
+    <tr>
+      <th scope="col">Rotation</th>
+      {% for st in jam.stations %}<th scope="col">{{ st.name }}<small>{{ st.room }}</small></th>{% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for rot in jam.rotations %}
+    <tr>
+      <th scope="row">Rotation {{ forloop.index }}</th>
+      {% for st in jam.stations %}
+        {% assign g = rot[st.key] %}
+      <td{% if g == jam.our_group %} class="ours"{% endif %}>Group {{ g }}{% if g == jam.our_group %} (us){% endif %}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>Teams by group</h2>
+<div class="jam-groups">
+{% for group in jam.groups %}
+  <section class="jam-group{% if group.letter == jam.our_group %} ours{% endif %}">
+    <h3>Group {{ group.letter }}{% if group.letter == jam.our_group %} (us){% endif %}</h3>
+    <p class="order">
+      {% for rot in jam.rotations %}{% for st in jam.stations %}{% if rot[st.key] == group.letter %}{{ st.room }}{% unless forloop.parentloop.last %} &rarr; {% endunless %}{% endif %}{% endfor %}{% endfor %}
+    </p>
+    <ul class="jam-teams">
+    {% for team in group.teams %}
+      {% assign mine = site.data.roster | where: "number", team.number | first %}
+      <li{% if mine %} class="ours"{% endif %}>{{ team.number }} &ndash; {{ team.name }}{% if mine %} <small>(ours: {{ mine.team }})</small>{% endif %}</li>
+    {% endfor %}
+    </ul>
+  </section>
+{% endfor %}
+</div>

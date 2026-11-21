@@ -1,0 +1,89 @@
+# FLL Explore jamboree schedule, shown on /jamboree.html. Copied from the
+# "Team Schedule" sheet handed out at the event.
+#
+# The sheet gives clock times only for the two ceremonies. Rotations have no
+# set times (see `note`), so they are listed in order, not by the clock.
+#
+# Our teams are not marked here: the page highlights any team whose `number`
+# matches a FIRST team number in roster.yml, and shows the roster's name next
+# to the one printed on the sheet. `our_group` is the group those teams are in.
+
+name: Wolfpack Robo Jamboree 2026
+our_group: B
+
+opening:
+  event: Opening Ceremonies
+  room: Auditorium
+  time: "9:00 AM"
+
+closing:
+  event: Closing Ceremonies
+  room: Auditorium
+  time: "Approximately 11:45 AM"
+
+note: >-
+  Rotations will be approximately 30-45 minutes. Please keep your team in their
+  designated rotation until the scheduler releases them.
+
+# `key` is what each rotation below uses to name the station.
+stations:
+  - key: reviewing
+    name: Reviewing and free build
+    room: Gym
+    description: Teams will wait their turn to be reviewed (interviewed by event volunteers).
+  - key: stem
+    name: STEM Stations
+    room: Cafeteria
+    description: There will be plenty of STEM activities to keep teams busy.
+  - key: demos
+    name: Robot Demonstrations
+    room: Library
+    description: >-
+      Robots from the LEGO Challenge, middle school, and the high school robot,
+      Grapefruit, will be interacting with teams.
+
+# Which group is at each station, one entry per rotation, in order.
+rotations:
+  - reviewing: A
+    stem: B
+    demos: C
+  - reviewing: C
+    stem: A
+    demos: B
+  - reviewing: B
+    stem: C
+    demos: A
+
+# `name` is the team name as printed on the sheet.
+groups:
+  - letter: A
+    teams:
+      - { number: 27094, name: Thunderpups Yellow }
+      - { number: 27893, name: Thunderpups Gold }
+      - { number: 28860, name: Thunderpups Purple }
+      - { number: 29000, name: Thunderpups Orange }
+      - { number: 29001, name: Thunderpups Sky Blue }
+      - { number: 31154, name: Bee Botics 1 }
+      - { number: 31326, name: Bee Botics 2 }
+      - { number: 31327, name: Bee Botics 3 }
+  - letter: B
+    teams:
+      - { number: 28679, name: Thunderpups Blue }
+      - { number: 28858, name: Thunderpups Red }
+      - { number: 28859, name: Thunderpups Forest Green }
+      - { number: 29356, name: Thunderpups Maroon }
+      - { number: 31328, name: Bee Botics 4 }
+      - { number: 31329, name: Bee Botics 5 }
+      - { number: 31330, name: Bee Botics 6 }
+      - { number: 36460, name: Thunderbolts }
+      - { number: 37423, name: LHH Explore 2 }
+  - letter: C
+    teams:
+      - { number: 24684, name: Thunderpups Mint Green }
+      - { number: 25807, name: Bitty Bongos Red }
+      - { number: 25808, name: Bitty Bongos Blue }
+      - { number: 26633, name: Bitty Bongos Yellow }
+      - { number: 26634, name: Bitty Bongos Green }
+      - { number: 27066, name: Thunderpups Irish Green }
+      - { number: 28712, name: Thunderpups Aqua }
+      - { number: 28772, name: Thunderpups Pink }
