@@ -19,7 +19,7 @@ title: Explore Jamboree Schedule
 
   .jam-day td:first-child, .jam-day th:first-child { white-space: nowrap; }
   .jam-rotations th, .jam-rotations td { text-align: center; }
-  .jam-rotations th[scope="row"] { text-align: left; white-space: nowrap; }
+  .jam-rotations th[scope="row"] { text-align: left; }
   .jam-rotations small { display: block; color: var(--text-muted); }
   .jam-rotations td.ours { background: #fdeeb0; font-weight: 700; }
 
@@ -86,15 +86,15 @@ title: Explore Jamboree Schedule
 <table class="jam-rotations">
   <thead>
     <tr>
-      <th scope="col">Rotation</th>
-      {% for st in jam.stations %}<th scope="col">{{ st.name }}<small>{{ st.room }}</small></th>{% endfor %}
+      <th scope="col">Station</th>
+      {% for rot in jam.rotations %}<th scope="col">Rotation {{ forloop.index }}</th>{% endfor %}
     </tr>
   </thead>
   <tbody>
-    {% for rot in jam.rotations %}
+    {% for st in jam.stations %}
     <tr>
-      <th scope="row">Rotation {{ forloop.index }}</th>
-      {% for st in jam.stations %}
+      <th scope="row">{{ st.name }}<small>{{ st.room }}</small></th>
+      {% for rot in jam.rotations %}
         {% assign g = rot[st.key] %}
       <td{% if g == jam.our_group %} class="ours"{% endif %}>Group {{ g }}{% if g == jam.our_group %} (us){% endif %}</td>
       {% endfor %}
